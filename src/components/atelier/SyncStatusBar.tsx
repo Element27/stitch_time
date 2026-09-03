@@ -43,17 +43,17 @@ export function SyncStatusBar({ compact = false }: { compact?: boolean }) {
         className={cn(
           "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono transition-all border",
           syncState.isOnline
-            ? "bg-[#1E1D1B] border-[#C89B3C]/30 text-[#E5DCD0] hover:border-[#C89B3C]"
-            : "bg-[#2A1E1E] border-red-500/40 text-red-200"
+            ? "bg-[#1D222A] border-[#C89B5C]/35 text-[#F4EFEA] hover:border-[#C89B5C]"
+            : "bg-[#2E3543] border-[#E28743]/50 text-[#E28743]"
         )}
         title={syncState.isOnline ? "Online: Click to sync with Cloud" : "Offline: IndexedDB active"}
       >
         {syncState.isSyncing || isSpinning ? (
-          <RefreshCw className="w-3 h-3 text-[#C89B3C] animate-spin" />
+          <RefreshCw className="w-3 h-3 text-[#C89B5C] animate-spin" />
         ) : syncState.isOnline ? (
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-[#3E7B5C] animate-pulse" />
         ) : (
-          <WifiOff className="w-3 h-3 text-amber-400" />
+          <WifiOff className="w-3 h-3 text-[#E28743]" />
         )}
         <span>
           {syncState.isOnline
@@ -67,19 +67,19 @@ export function SyncStatusBar({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <div className="w-full bg-[#181715] border-b border-[rgba(214,203,189,0.1)] px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-3">
+    <div className="w-full bg-[#1D222A] border-b border-[rgba(158,152,143,0.18)] px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-3">
       <div className="flex items-center gap-2.5">
         <div className="flex items-center gap-1.5">
           {syncState.isOnline ? (
-            <div className="flex items-center gap-1.5 text-emerald-400 font-medium">
+            <div className="flex items-center gap-1.5 text-[#3E7B5C] font-semibold">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#3E7B5C] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#3E7B5C]"></span>
               </span>
               <span className="tracking-wide">Atelier Cloud Active</span>
             </div>
           ) : (
-            <div className="flex items-center gap-1.5 text-amber-400 font-medium">
+            <div className="flex items-center gap-1.5 text-[#E28743] font-semibold">
               <WifiOff className="w-3.5 h-3.5" />
               <span>Offline Fitting Mode (Dexie.js)</span>
             </div>
@@ -87,13 +87,13 @@ export function SyncStatusBar({ compact = false }: { compact?: boolean }) {
         </div>
 
         {syncState.pendingCount > 0 && (
-          <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono bg-[#C89B3C]/15 text-[#E0BA62] border border-[#C89B3C]/30">
+          <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono bg-[#C89B5C]/15 text-[#C89B5C] border border-[#C89B5C]/30 font-bold">
             {syncState.pendingCount} fitting{syncState.pendingCount > 1 ? 's' : ''} queued
           </span>
         )}
 
         {syncState.lastSyncedAt && (
-          <span className="text-[#D3C7B6] font-mono text-[11px] hidden sm:inline">
+          <span className="text-[#9E988F] font-mono text-[11px] hidden sm:inline">
             Last sync: {formatTimeAgo(syncState.lastSyncedAt.toISOString())}
           </span>
         )}
@@ -105,8 +105,8 @@ export function SyncStatusBar({ compact = false }: { compact?: boolean }) {
           className={cn(
             "px-2.5 py-1 rounded text-[11px] font-mono font-medium transition-colors border",
             syncState.offlineSimulation
-              ? "bg-amber-950/70 border-amber-500/60 text-amber-200"
-              : "bg-[#242220] border-[rgba(214,203,189,0.18)] text-[#D3C7B6] hover:text-[#FAF7F2]"
+              ? "bg-[#2E3543] border-[#E28743]/60 text-[#E28743]"
+              : "bg-[#2E3543] border-[rgba(158,152,143,0.18)] text-[#9E988F] hover:text-[#F4EFEA]"
           )}
         >
           {syncState.offlineSimulation ? "Simulating Offline (Click to Reconnect)" : "Simulate Offline"}
@@ -115,9 +115,9 @@ export function SyncStatusBar({ compact = false }: { compact?: boolean }) {
         <button
           onClick={handleManualSync}
           disabled={syncState.isSyncing || !syncState.isOnline}
-          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.15)] text-[#FAF7F2] transition-colors disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#2E3543] hover:bg-[#384050] border border-[rgba(158,152,143,0.2)] text-[#F4EFEA] transition-colors disabled:opacity-50 font-medium font-mono text-xs"
         >
-          <RefreshCw className={cn("w-3 h-3 text-[#C89B3C]", (syncState.isSyncing || isSpinning) && "animate-spin")} />
+          <RefreshCw className={cn("w-3 h-3 text-[#C89B5C]", (syncState.isSyncing || isSpinning) && "animate-spin")} />
           <span>Sync Now</span>
         </button>
       </div>

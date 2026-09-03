@@ -134,10 +134,10 @@ export default function ClientDetailPage() {
         </div>
 
         {/* Client Profile Header Card */}
-        <section className="p-5 rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.14)] shadow-xl flex flex-col gap-4">
+        <section className="p-5 rounded-2xl bg-[#1D222A] border border-[rgba(158,152,143,0.18)] shadow-xl flex flex-col gap-4">
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-center gap-3.5">
-              <div className="w-14 h-14 rounded-full bg-[#242220] border-2 border-[#C89B3C]/40 flex items-center justify-center font-mono font-bold text-base text-[#E0BA62] overflow-hidden flex-shrink-0">
+              <div className="w-14 h-14 rounded-full bg-[#2E3543] border-2 border-[#C89B5C]/50 flex items-center justify-center font-mono font-bold text-base text-[#C89B5C] overflow-hidden flex-shrink-0">
                 {client.avatar_url ? (
                   <img
                     src={client.avatar_url}
@@ -151,24 +151,24 @@ export default function ClientDetailPage() {
 
               <div>
                 <div className="flex items-center gap-2">
-                  <h2 className="text-xl font-serif font-bold text-[#FAF7F2]">
+                  <h2 className="text-xl font-serif font-bold text-[#F4EFEA]">
                     {client.full_name}
                   </h2>
                   {client.vip_status && (
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-[#C89B3C]/20 border border-[#C89B3C]/40 text-[#E0BA62] flex items-center gap-1 font-semibold">
-                      <Star className="w-2.5 h-2.5 fill-[#E0BA62]" /> VIP Patron
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-[#C89B5C]/20 border border-[#C89B5C]/40 text-[#C89B5C] flex items-center gap-1 font-bold">
+                      <Star className="w-2.5 h-2.5 fill-[#C89B5C]" /> VIP Patron
                     </span>
                   )}
                 </div>
-                <div className="flex flex-wrap items-center gap-3 text-xs text-[#9E948A] mt-1 font-mono">
+                <div className="flex flex-wrap items-center gap-3 text-xs text-[#9E988F] mt-1 font-mono">
                   {client.phone && (
-                    <a href={`tel:${client.phone}`} className="flex items-center gap-1 hover:text-[#FAF7F2]">
-                      <Phone className="w-3 h-3 text-[#C89B3C]" /> {client.phone}
+                    <a href={`tel:${client.phone}`} className="flex items-center gap-1 hover:text-[#F4EFEA]">
+                      <Phone className="w-3 h-3 text-[#C89B5C]" /> {client.phone}
                     </a>
                   )}
                   {client.email && (
-                    <a href={`mailto:${client.email}`} className="flex items-center gap-1 hover:text-[#FAF7F2]">
-                      <Mail className="w-3 h-3 text-[#C89B3C]" /> {client.email}
+                    <a href={`mailto:${client.email}`} className="flex items-center gap-1 hover:text-[#F4EFEA]">
+                      <Mail className="w-3 h-3 text-[#C89B5C]" /> {client.email}
                     </a>
                   )}
                 </div>
@@ -177,7 +177,7 @@ export default function ClientDetailPage() {
 
             <Link
               href={`/fittings/new?clientId=${client.id}`}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-semibold text-xs transition-colors shadow-lg shadow-[#C89B3C]/20 flex-shrink-0"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#C89B5C] hover:bg-[#DFB77B] text-[#13161C] font-bold text-xs transition-colors shadow-lg shadow-[#C89B5C]/20 flex-shrink-0"
             >
               <Ruler className="w-4 h-4 stroke-[2.2]" />
               <span>Record Fitting</span>
@@ -186,11 +186,11 @@ export default function ClientDetailPage() {
 
           {/* Posture / Tailoring Notes */}
           {client.notes && (
-            <div className="p-3 rounded-xl bg-[#141312] border border-[rgba(214,203,189,0.08)]">
-              <span className="text-[10px] font-mono uppercase text-[#C89B3C] block mb-0.5">
+            <div className="p-3 rounded-xl bg-[#13161C] border border-[rgba(158,152,143,0.18)]">
+              <span className="text-[10px] font-mono uppercase text-[#C89B5C] block mb-0.5 font-bold">
                 Atelier Tailoring Profile &amp; Posture
               </span>
-              <p className="text-xs text-[#FAF7F2]/90 leading-relaxed font-mono">
+              <p className="text-xs text-[#F4EFEA] leading-relaxed font-mono">
                 {client.notes}
               </p>
             </div>
@@ -198,14 +198,14 @@ export default function ClientDetailPage() {
         </section>
 
         {/* Tab Navigation (Fits / Version Diff / Orders) */}
-        <div className="flex items-center gap-2 border-b border-[rgba(214,203,189,0.14)] pb-2 overflow-x-auto">
+        <div className="flex items-center gap-2 border-b border-[rgba(158,152,143,0.18)] pb-2 overflow-x-auto">
           <button
             type="button"
             onClick={() => setActiveTab('fits')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all border whitespace-nowrap ${
               activeTab === 'fits'
-                ? 'bg-[#C89B3C] text-[#141312] font-bold border-[#FAF7F2] shadow-md'
-                : 'bg-[#181715] text-[#D3C7B6] hover:text-[#FAF7F2] border-[rgba(214,203,189,0.12)] hover:border-[#C89B3C]/40'
+                ? 'bg-[#C89B5C] text-[#13161C] font-bold border-[#F4EFEA] shadow-md'
+                : 'bg-[#1D222A] text-[#9E988F] hover:text-[#F4EFEA] border-[rgba(158,152,143,0.18)] hover:border-[#C89B5C]/50'
             }`}
           >
             Fitting Logs ({logs.length})
@@ -215,8 +215,8 @@ export default function ClientDetailPage() {
             onClick={() => setActiveTab('compare')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all border whitespace-nowrap ${
               activeTab === 'compare'
-                ? 'bg-[#C89B3C] text-[#141312] font-bold border-[#FAF7F2] shadow-md'
-                : 'bg-[#181715] text-[#D3C7B6] hover:text-[#FAF7F2] border-[rgba(214,203,189,0.12)] hover:border-[#C89B3C]/40'
+                ? 'bg-[#C89B5C] text-[#13161C] font-bold border-[#F4EFEA] shadow-md'
+                : 'bg-[#1D222A] text-[#9E988F] hover:text-[#F4EFEA] border-[rgba(158,152,143,0.18)] hover:border-[#C89B5C]/50'
             }`}
           >
             Version Delta Compare
@@ -226,8 +226,8 @@ export default function ClientDetailPage() {
             onClick={() => setActiveTab('orders')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all border whitespace-nowrap ${
               activeTab === 'orders'
-                ? 'bg-[#C89B3C] text-[#141312] font-bold border-[#FAF7F2] shadow-md'
-                : 'bg-[#181715] text-[#D3C7B6] hover:text-[#FAF7F2] border-[rgba(214,203,189,0.12)] hover:border-[#C89B3C]/40'
+                ? 'bg-[#C89B5C] text-[#13161C] font-bold border-[#F4EFEA] shadow-md'
+                : 'bg-[#1D222A] text-[#9E988F] hover:text-[#F4EFEA] border-[rgba(158,152,143,0.18)] hover:border-[#C89B5C]/50'
             }`}
           >
             Bespoke Orders ({orders.length})
@@ -238,13 +238,13 @@ export default function ClientDetailPage() {
         {activeTab === 'fits' && (
           <div className="space-y-3">
             {logs.length === 0 ? (
-              <div className="p-8 text-center rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.12)] text-xs text-[#D3C7B6]">
-                <Ruler className="w-8 h-8 text-[#C89B3C] mx-auto mb-2" />
-                <p className="font-serif text-sm text-[#FAF7F2] mb-1">No Measurement Logs</p>
-                <p className="text-xs text-[#B8ADA0] mb-3">No fitting sessions recorded for this client yet.</p>
+              <div className="p-8 text-center rounded-2xl bg-[#1D222A] border border-[rgba(158,152,143,0.18)] text-xs text-[#9E988F]">
+                <Ruler className="w-8 h-8 text-[#C89B5C] mx-auto mb-2" />
+                <p className="font-serif text-base font-bold text-[#F4EFEA] mb-1">No Measurement Logs</p>
+                <p className="text-xs text-[#9E988F] mb-3">No fitting sessions recorded for this client yet.</p>
                 <Link
                   href={`/fittings/new?clientId=${client.id}`}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-bold text-xs transition-colors shadow-md"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#C89B5C] hover:bg-[#DFB77B] text-[#13161C] font-bold text-xs transition-colors shadow-md"
                 >
                   <Ruler className="w-3.5 h-3.5" />
                   <span>Start First Fitting Session &rarr;</span>
@@ -254,24 +254,24 @@ export default function ClientDetailPage() {
               logs.map((log, idx) => (
                 <div
                   key={log.id}
-                  className="p-4 rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.14)] hover:border-[#C89B3C]/40 flex flex-col gap-3 shadow-md transition-all"
+                  className="p-4 rounded-2xl bg-[#1D222A] border border-[rgba(158,152,143,0.18)] hover:border-[#C89B5C]/50 flex flex-col gap-3 shadow-md transition-all"
                 >
-                  <div className="flex items-center justify-between border-b border-[rgba(214,203,189,0.1)] pb-2.5">
+                  <div className="flex items-center justify-between border-b border-[rgba(158,152,143,0.18)] pb-2.5">
                     <div className="flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-full bg-[#242220] border border-[#C89B3C]/50 text-[#E0BA62] text-xs font-mono flex items-center justify-center font-bold">
+                      <span className="w-6 h-6 rounded-full bg-[#2E3543] border border-[#C89B5C]/50 text-[#C89B5C] text-xs font-mono flex items-center justify-center font-bold">
                         v{logs.length - idx}
                       </span>
-                      <span className="text-sm font-serif font-bold text-[#FAF7F2]">
+                      <span className="text-sm font-serif font-bold text-[#F4EFEA]">
                         {formatDate(log.recorded_at)}
                       </span>
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#242220] text-[#E0BA62] border border-[#C89B3C]/40 uppercase font-semibold">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#2E3543] text-[#C89B5C] border border-[#C89B5C]/40 uppercase font-semibold">
                         {log.unit}
                       </span>
                       {log.fit_preferences?.fit_type && (
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#242220] text-[#D3C7B6] border border-[rgba(214,203,189,0.12)] capitalize">
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#2E3543] text-[#9E988F] border border-[rgba(158,152,143,0.18)] capitalize font-medium">
                           {log.fit_preferences.fit_type}
                         </span>
                       )}
@@ -279,7 +279,7 @@ export default function ClientDetailPage() {
                   </div>
 
                   {log.notes && (
-                    <p className="text-xs text-[#FAF7F2] bg-[#141312] p-2.5 rounded-lg border border-[rgba(214,203,189,0.1)] font-mono leading-relaxed">
+                    <p className="text-xs text-[#F4EFEA] bg-[#13161C] p-2.5 rounded-lg border border-[rgba(158,152,143,0.18)] font-mono leading-relaxed">
                       &ldquo;{log.notes}&rdquo;
                     </p>
                   )}
@@ -289,10 +289,10 @@ export default function ClientDetailPage() {
                     {Object.entries(log.values || {}).map(([point, val]) => (
                       <div
                         key={point}
-                        className="p-2.5 rounded-xl bg-[#242220] border border-[rgba(214,203,189,0.1)] flex flex-col justify-between"
+                        className="p-2.5 rounded-xl bg-[#2E3543] border border-[rgba(158,152,143,0.18)] flex flex-col justify-between"
                       >
-                        <span className="text-[10px] font-mono text-[#D3C7B6] truncate">{point}</span>
-                        <span className="text-sm font-mono font-bold text-[#E0BA62] tnum mt-0.5">
+                        <span className="text-[10px] font-mono text-[#9E988F] truncate">{point}</span>
+                        <span className="text-sm font-mono font-bold text-[#C89B5C] tnum mt-0.5">
                           {formatMeasurement(val, log.unit)}
                         </span>
                       </div>
@@ -315,12 +315,12 @@ export default function ClientDetailPage() {
         {activeTab === 'orders' && (
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono font-semibold text-[#D3C7B6]">
+              <span className="text-xs font-mono font-semibold text-[#9E988F]">
                 {orders.length} Garment Orders
               </span>
               <Link
                 href={`/orders?newFor=${client.id}`}
-                className="inline-flex items-center gap-1 text-xs font-mono text-[#E0BA62] hover:underline"
+                className="inline-flex items-center gap-1 text-xs font-mono text-[#C89B5C] hover:underline font-bold"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Create Order for Patron</span>
@@ -328,10 +328,10 @@ export default function ClientDetailPage() {
             </div>
 
             {orders.length === 0 ? (
-              <div className="p-8 text-center rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.12)] text-xs text-[#D3C7B6]">
-                <Scissors className="w-8 h-8 text-[#C89B3C] mx-auto mb-2" />
-                <p className="font-serif text-sm text-[#FAF7F2] mb-1">No Orders Commissioned</p>
-                <p className="text-xs text-[#B8ADA0]">No bespoke garments commissioned by this client yet.</p>
+              <div className="p-8 text-center rounded-2xl bg-[#1D222A] border border-[rgba(158,152,143,0.18)] text-xs text-[#9E988F]">
+                <Scissors className="w-8 h-8 text-[#C89B5C] mx-auto mb-2" />
+                <p className="font-serif text-base font-bold text-[#F4EFEA] mb-1">No Orders Commissioned</p>
+                <p className="text-xs text-[#9E988F]">No bespoke garments commissioned by this client yet.</p>
               </div>
             ) : (
               orders.map((order) => (
@@ -358,7 +358,7 @@ export default function ClientDetailPage() {
       >
         <form onSubmit={handleUpdate} className="flex flex-col gap-3.5 text-xs">
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
               Full Name *
             </label>
             <input
@@ -366,60 +366,60 @@ export default function ClientDetailPage() {
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
+              className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] placeholder-[#7D776E] focus:border-[#C89B5C] focus:outline-none"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-2.5">
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
                 Phone Number
               </label>
               <input
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] placeholder-[#7D776E] focus:border-[#C89B5C] focus:outline-none"
               />
             </div>
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
                 Email Address
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] placeholder-[#7D776E] focus:border-[#C89B5C] focus:outline-none"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
               Anatomical &amp; Tailoring Notes
             </label>
             <textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               rows={3}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none resize-none"
+              className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] placeholder-[#7D776E] focus:border-[#C89B5C] focus:outline-none resize-none"
             />
           </div>
 
-          <label className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#242220] border border-[rgba(214,203,189,0.12)] cursor-pointer">
+          <label className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#2E3543] border border-[rgba(158,152,143,0.18)] cursor-pointer">
             <input
               type="checkbox"
               checked={isVip}
               onChange={(e) => setIsVip(e.target.checked)}
-              className="rounded text-[#C89B3C] focus:ring-[#C89B3C] bg-[#141312] w-4 h-4"
+              className="rounded text-[#C89B5C] focus:ring-[#C89B5C] bg-[#13161C] w-4 h-4"
             />
-            <span className="text-xs font-mono font-medium text-[#FAF7F2]">Mark as VIP Patron</span>
+            <span className="text-xs font-mono font-medium text-[#F4EFEA]">Mark as VIP Patron</span>
           </label>
 
           <button
             type="submit"
-            className="w-full py-3.5 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] active:scale-[0.98] text-[#141312] font-bold text-sm transition-all shadow-lg shadow-[#C89B3C]/20 mt-2"
+            className="w-full py-3.5 rounded-xl bg-[#C89B5C] hover:bg-[#DFB77B] active:scale-[0.98] text-[#13161C] font-bold text-sm transition-all shadow-lg shadow-[#C89B5C]/20 mt-2"
           >
             Update Profile
           </button>

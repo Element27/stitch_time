@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Editorial fitting & bespoke tailoring companion for on-the-go garment designers.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#141312',
-    theme_color: '#141312',
+    background_color: '#13161C',
+    theme_color: '#13161C',
     orientation: 'portrait-primary',
     icons: [
       {
