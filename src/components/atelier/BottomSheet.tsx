@@ -55,24 +55,24 @@ export function BottomSheet({ isOpen, onClose, title, subtitle, children }: Bott
             dragConstraints={{ top: 0 }}
             dragElastic={0.1}
             onDragEnd={handleDragEnd}
-            className="relative z-10 w-full max-w-lg bg-[#181715] rounded-t-3xl border-t border-x border-[rgba(214,203,189,0.18)] shadow-2xl overflow-hidden flex flex-col max-h-[92vh]"
+            className="relative z-10 w-full max-w-lg bg-[#1D222A] rounded-t-3xl border-t border-x border-[rgba(158,152,143,0.22)] shadow-2xl overflow-hidden flex flex-col max-h-[92vh]"
           >
             {/* Grab Handle */}
             <div className="w-full flex flex-col items-center pt-3 pb-1 cursor-grab active:cursor-grabbing">
-              <div className="w-12 h-1.5 rounded-full bg-[rgba(214,203,189,0.25)] hover:bg-[#C89B3C]/50 transition-colors" />
+              <div className="w-12 h-1.5 rounded-full bg-[rgba(158,152,143,0.3)] hover:bg-[#C89B5C]/60 transition-colors" />
             </div>
 
             {/* Optional Header */}
             {(title || subtitle) && (
-              <div className="px-5 py-3 border-b border-[rgba(214,203,189,0.1)] flex items-center justify-between">
+              <div className="px-5 py-3 border-b border-[rgba(158,152,143,0.18)] flex items-center justify-between">
                 <div>
-                  {title && <h2 className="text-lg font-serif font-bold text-[#FAF7F2]">{title}</h2>}
-                  {subtitle && <p className="text-xs text-[#9E948A] mt-0.5">{subtitle}</p>}
+                  {title && <h2 className="text-lg font-serif font-bold text-[#F4EFEA]">{title}</h2>}
+                  {subtitle && <p className="text-xs text-[#9E988F] mt-0.5">{subtitle}</p>}
                 </div>
                 <button
                   type="button"
                   onClick={onClose}
-                  className="p-2 rounded-full bg-[#242220] hover:bg-[#2E2B27] text-[#9E948A] hover:text-[#FAF7F2] transition-colors"
+                  className="p-2 rounded-full bg-[#2E3543] hover:bg-[#384050] text-[#9E988F] hover:text-[#F4EFEA] transition-colors"
                 >
                   <X className="w-4 h-4" />
                 </button>

@@ -113,17 +113,17 @@ export default function OrdersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#141312] text-[#FAF7F2] pb-28 atelier-grain">
+    <div className="min-h-screen bg-[#13161C] text-[#F4EFEA] pb-28 atelier-grain">
       <AtelierHeader title="Workbench Orders" subtitle="Production Lifecycle Pipeline" />
 
       <main className="max-w-4xl mx-auto px-4 py-4 flex flex-col gap-4">
         {/* Header & CTA */}
         <div className="flex items-center justify-between gap-3">
           <div>
-            <h2 className="text-xl font-serif font-bold text-[#FAF7F2]">
+            <h2 className="text-xl font-serif font-bold text-[#F4EFEA]">
               Garment Commissions
             </h2>
-            <p className="text-xs text-[#9E948A]">
+            <p className="text-xs text-[#9E988F]">
               {orders.filter((o) => o.status !== 'delivered').length} active garments in atelier production
             </p>
           </div>
@@ -136,7 +136,7 @@ export default function OrdersPage() {
               }
               setShowNewOrderSheet(true);
             }}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-semibold text-xs transition-colors shadow-md"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#C89B5C] hover:bg-[#DFB77B] text-[#13161C] font-bold text-xs transition-colors shadow-md"
           >
             <Plus className="w-4 h-4" />
             <span>New Order</span>
@@ -146,13 +146,13 @@ export default function OrdersPage() {
         {/* Search & Status Pill Filter Tabs */}
         <div className="flex flex-col gap-2.5">
           <div className="relative">
-            <Search className="w-4 h-4 text-[#D3C7B6] absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#9E988F] absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search garments by commission title, patron, or type..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#181715] border border-[rgba(214,203,189,0.18)] rounded-xl pl-10 pr-4 py-2.5 text-xs text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
+              className="w-full bg-[#1D222A] border border-[rgba(158,152,143,0.18)] rounded-xl pl-10 pr-4 py-2.5 text-xs text-[#F4EFEA] placeholder-[#7D776E] focus:border-[#C89B5C] focus:outline-none"
             />
           </div>
 
@@ -173,16 +173,16 @@ export default function OrdersPage() {
                   onClick={() => setActiveTab(tab.key)}
                   className={`px-3 py-1.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all flex items-center gap-1.5 border ${
                     isSelected
-                      ? 'bg-[#C89B3C] text-[#141312] font-bold border-[#FAF7F2] shadow-md'
-                      : 'bg-[#181715] text-[#D3C7B6] hover:text-[#FAF7F2] border-[rgba(214,203,189,0.12)] hover:border-[#C89B3C]/40'
+                      ? 'bg-[#C89B5C] text-[#13161C] font-bold border-[#F4EFEA] shadow-md'
+                      : 'bg-[#1D222A] text-[#9E988F] hover:text-[#F4EFEA] border-[rgba(158,152,143,0.18)] hover:border-[#C89B5C]/50'
                   }`}
                 >
                   <span>{tab.label}</span>
                   <span
                     className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
                       isSelected
-                        ? 'bg-[#141312] text-[#FAF7F2]'
-                        : 'bg-[#242220] text-[#E0BA62] border border-[rgba(214,203,189,0.1)]'
+                        ? 'bg-[#13161C] text-[#F4EFEA]'
+                        : 'bg-[#2E3543] text-[#C89B5C] border border-[rgba(158,152,143,0.18)]'
                     }`}
                   >
                     {count}
@@ -196,10 +196,10 @@ export default function OrdersPage() {
         {/* Orders Pipeline List */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
           {filteredOrders.length === 0 ? (
-            <div className="md:col-span-2 p-10 text-center rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.12)] text-xs text-[#D3C7B6]">
-              <Scissors className="w-8 h-8 text-[#C89B3C] mx-auto mb-2" />
-              <p className="font-serif text-sm text-[#FAF7F2] mb-1">No Orders Found</p>
-              <p className="text-xs text-[#B8ADA0]">No garments found matching the selected filter criteria.</p>
+            <div className="md:col-span-2 p-10 text-center rounded-2xl bg-[#1D222A] border border-[rgba(158,152,143,0.18)] text-xs text-[#9E988F]">
+              <Scissors className="w-8 h-8 text-[#C89B5C] mx-auto mb-2" />
+              <p className="font-serif text-base font-bold text-[#F4EFEA] mb-1">No Orders Found</p>
+              <p className="text-xs text-[#9E988F]">No garments found matching the selected filter criteria.</p>
             </div>
           ) : (
             filteredOrders.map((order) => {
@@ -227,7 +227,7 @@ export default function OrdersPage() {
         <form onSubmit={handleCreateOrder} className="flex flex-col gap-3.5 text-xs">
           {/* Client Selector */}
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
               Patron Client *
             </label>
             <select
@@ -238,7 +238,7 @@ export default function OrdersPage() {
                 const clientLogs = logs.filter((l) => l.client_id === e.target.value);
                 if (clientLogs.length > 0) setSelectedLogId(clientLogs[0].id);
               }}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] font-serif text-sm focus:border-[#C89B3C] focus:outline-none"
+              className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] font-serif text-sm focus:border-[#C89B5C] focus:outline-none"
             >
               <option value="" disabled>Select Patron...</option>
               {clients.map((c) => (
@@ -252,7 +252,7 @@ export default function OrdersPage() {
           {/* Garment Title & Type */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
                 Order Title *
               </label>
               <input
@@ -261,12 +261,12 @@ export default function OrdersPage() {
                 placeholder="e.g. Midnight Barathea Tuxedo"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] placeholder-[#7D776E] focus:border-[#C89B5C] focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
                 Garment Category
               </label>
               <input
@@ -274,7 +274,7 @@ export default function OrdersPage() {
                 placeholder="e.g. Bespoke 3-Piece Suit"
                 value={garmentType}
                 onChange={(e) => setGarmentType(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] placeholder-[#7D776E] focus:border-[#C89B5C] focus:outline-none"
               />
             </div>
           </div>
@@ -282,13 +282,13 @@ export default function OrdersPage() {
           {/* Target Stage & Priority */}
           <div className="grid grid-cols-2 gap-2.5">
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
                 Starting Stage
               </label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value as any)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] font-mono focus:border-[#C89B5C] focus:outline-none"
               >
                 <option value="pending">Pending</option>
                 <option value="cutting">Cutting</option>
@@ -299,13 +299,13 @@ export default function OrdersPage() {
             </div>
 
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
                 Priority Tier
               </label>
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value as any)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] font-mono focus:border-[#C89B5C] focus:outline-none"
               >
                 <option value="standard">Standard Atelier</option>
                 <option value="rush">Rush Express</option>
@@ -317,7 +317,7 @@ export default function OrdersPage() {
           {/* Pricing & Deposit */}
           <div className="grid grid-cols-2 gap-2.5">
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
                 Total Price ($)
               </label>
               <input
@@ -326,12 +326,12 @@ export default function OrdersPage() {
                 required
                 value={totalPrice}
                 onChange={(e) => setTotalPrice(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] font-mono focus:border-[#C89B5C] focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
                 Deposit Received ($)
               </label>
               <input
@@ -339,26 +339,26 @@ export default function OrdersPage() {
                 step="0.01"
                 value={depositPaid}
                 onChange={(e) => setDepositPaid(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] font-mono focus:border-[#C89B5C] focus:outline-none"
               />
             </div>
           </div>
 
           {/* Due Date */}
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
               Target Completion / Fitting Due Date
             </label>
             <input
               type="date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
+              className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] font-mono focus:border-[#C89B5C] focus:outline-none"
             />
           </div>
 
           {/* Swatch Picker */}
-          <div className="pt-2 border-t border-[rgba(214,203,189,0.12)]">
+          <div className="pt-2 border-t border-[rgba(158,152,143,0.18)]">
             <SwatchGallery
               selectedSwatches={selectedSwatches}
               onToggleSwatch={handleToggleSwatch}
@@ -367,7 +367,7 @@ export default function OrdersPage() {
 
           {/* Commission Notes */}
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
               Workbench / Tailor Instructions
             </label>
             <textarea
@@ -375,13 +375,13 @@ export default function OrdersPage() {
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               rows={2}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none resize-none"
+              className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-xl p-3 text-[#F4EFEA] placeholder-[#7D776E] focus:border-[#C89B5C] focus:outline-none resize-none"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-3.5 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] active:scale-[0.98] text-[#141312] font-bold text-sm transition-all shadow-lg shadow-[#C89B3C]/20 mt-2"
+            className="w-full py-3.5 rounded-xl bg-[#C89B5C] hover:bg-[#DFB77B] active:scale-[0.98] text-[#13161C] font-bold text-sm transition-all shadow-lg shadow-[#C89B5C]/20 mt-2"
           >
             Create Order &amp; Launch Workbench
           </button>

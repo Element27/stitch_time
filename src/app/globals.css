@@ -6,34 +6,44 @@
   --font-mono: 'JetBrains Mono', monospace;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  --color-atelier-charcoal: #141312;
-  --color-atelier-charcoal-light: #1E1D1B;
-  --color-atelier-surface: #242220;
-  --color-atelier-card: #1A1917;
-  --color-atelier-border: rgba(214, 203, 189, 0.16);
-  --color-atelier-cream: #FAF7F2;
-  --color-atelier-ecru: #F5EFE6;
-  --color-atelier-stone: #E5DCD0;
-  --color-atelier-sand: #D3C7B6;
-  --color-atelier-muted: #B8ADA0;
-  --color-atelier-brass: #C89B3C;
-  --color-atelier-brass-light: #E0BA62;
-  --color-atelier-brass-dark: #A37922;
-  --color-atelier-terracotta: #D97757;
-  --color-atelier-olive: #6E7D5E;
+  /* Curated Savile Row Atelier Palette */
+  --color-atelier-midnight: #13161C;
+  --color-atelier-slate: #1D222A;
+  --color-atelier-baste: #2E3543;
+  --color-atelier-parchment: #F4EFEA;
+  --color-atelier-linen: #9E988F;
+  --color-atelier-brass: #C89B5C;
+  --color-atelier-ochre: #E28743;
+  --color-atelier-forest: #3E7B5C;
+
+  /* Legacy aliases mapped gracefully */
+  --color-atelier-charcoal: #13161C;
+  --color-atelier-charcoal-light: #1D222A;
+  --color-atelier-surface: #2E3543;
+  --color-atelier-card: #1D222A;
+  --color-atelier-border: rgba(158, 152, 143, 0.18);
+  --color-atelier-cream: #F4EFEA;
+  --color-atelier-ecru: #F4EFEA;
+  --color-atelier-stone: #D8D2C9;
+  --color-atelier-sand: #C2BBB0;
+  --color-atelier-muted: #9E988F;
+  --color-atelier-brass-light: #DFB77B;
+  --color-atelier-brass-dark: #9F7435;
+  --color-atelier-terracotta: #E28743;
+  --color-atelier-olive: #3E7B5C;
 }
 
 :root {
-  --background: #141312;
-  --foreground: #FAF7F2;
-  --surface: #1E1D1B;
-  --surface-hover: #272523;
-  --card: #1A1917;
-  --border: rgba(214, 203, 189, 0.14);
-  --border-active: rgba(200, 155, 60, 0.5);
-  --accent: #C89B3C;
-  --accent-foreground: #141312;
-  --muted: #B8ADA0;
+  --background: #13161C;
+  --foreground: #F4EFEA;
+  --surface: #1D222A;
+  --surface-hover: #262D37;
+  --card: #1D222A;
+  --border: rgba(158, 152, 143, 0.18);
+  --border-active: rgba(200, 155, 92, 0.5);
+  --accent: #C89B5C;
+  --accent-foreground: #13161C;
+  --muted: #9E988F;
 }
 
 * {
@@ -42,8 +52,8 @@
 }
 
 html, body {
-  background-color: #141312;
-  color: #FAF7F2;
+  background-color: #13161C;
+  color: #F4EFEA;
   font-family: var(--font-sans);
   min-height: 100vh;
   min-height: -webkit-fill-available;
@@ -52,13 +62,13 @@ html, body {
 
 /* Form Inputs & Selects Cross-Browser Contrast */
 select option {
-  background-color: #1E1D1B;
-  color: #FAF7F2;
+  background-color: #1D222A;
+  color: #F4EFEA;
   padding: 8px 12px;
 }
 
 input::placeholder, textarea::placeholder {
-  color: #8E847A;
+  color: #7D776E;
 }
 
 /* Tabular figures for measurements */
@@ -69,21 +79,21 @@ input::placeholder, textarea::placeholder {
 
 /* Subtle Atelier Chalk Lines */
 .border-chalk {
-  border-color: rgba(214, 203, 189, 0.16);
+  border-color: rgba(158, 152, 143, 0.18);
 }
 
 .border-chalk-dashed {
   border-style: dashed;
-  border-color: rgba(214, 203, 189, 0.25);
+  border-color: rgba(158, 152, 143, 0.28);
 }
 
 /* Gold/Brass Glow & Focus Ring */
 .glow-brass {
-  box-shadow: 0 0 24px -4px rgba(200, 155, 60, 0.3);
+  box-shadow: 0 0 24px -4px rgba(200, 155, 92, 0.35);
 }
 
 .glow-brass-sm {
-  box-shadow: 0 0 12px -2px rgba(200, 155, 60, 0.25);
+  box-shadow: 0 0 12px -2px rgba(200, 155, 92, 0.28);
 }
 
 /* Mobile viewport bottom safe area */
@@ -106,17 +116,17 @@ input::placeholder, textarea::placeholder {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(214, 203, 189, 0.2);
+  background: rgba(158, 152, 143, 0.22);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(200, 155, 60, 0.45);
+  background: rgba(200, 155, 92, 0.5);
 }
 
 /* Grain texture subtle overlay */
 .atelier-grain {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 0);
   background-size: 24px 24px;
 }
 

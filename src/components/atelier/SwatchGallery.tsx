@@ -51,8 +51,8 @@ export function SwatchGallery({
     <div className="w-full flex flex-col gap-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-[#C89B3C]" />
-          <h4 className="text-sm font-serif font-bold text-[#FAF7F2]">
+          <Sparkles className="w-4 h-4 text-[#C89B5C]" />
+          <h4 className="text-sm font-serif font-bold text-[#F4EFEA]">
             Atelier Fabric Swatches &amp; Mill Archives
           </h4>
         </div>
@@ -60,9 +60,9 @@ export function SwatchGallery({
           <button
             type="button"
             onClick={() => setShowAddForm(!showAddForm)}
-            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.1)] text-xs font-mono text-[#FAF7F2] transition-colors"
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#2E3543] hover:bg-[#384050] border border-[rgba(158,152,143,0.18)] text-xs font-mono text-[#F4EFEA] transition-colors"
           >
-            <Plus className="w-3.5 h-3.5 text-[#C89B3C]" />
+            <Plus className="w-3.5 h-3.5 text-[#C89B5C]" />
             <span>Add Swatch</span>
           </button>
         )}
@@ -72,16 +72,16 @@ export function SwatchGallery({
       {showAddForm && (
         <form
           onSubmit={handleAddCustom}
-          className="p-3.5 rounded-xl bg-[#141312] border border-[#C89B3C]/30 flex flex-col gap-2.5 glow-brass-sm"
+          className="p-3.5 rounded-xl bg-[#13161C] border border-[#C89B5C]/40 flex flex-col gap-2.5 glow-brass-sm"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-mono font-semibold text-[#E0BA62] uppercase">
+            <span className="text-xs font-mono font-bold text-[#C89B5C] uppercase">
               Register New Cloth / Swatch
             </span>
             <button
               type="button"
               onClick={() => setShowAddForm(false)}
-              className="text-[#9E948A] hover:text-[#FAF7F2]"
+              className="text-[#9E988F] hover:text-[#F4EFEA]"
             >
               <X className="w-4 h-4" />
             </button>
@@ -93,7 +93,7 @@ export function SwatchGallery({
               placeholder="Fabric name (e.g., Midnight Barathea)"
               value={newSwatchName}
               onChange={(e) => setNewSwatchName(e.target.value)}
-              className="bg-[#242220] border border-[rgba(214,203,189,0.12)] rounded-lg px-2.5 py-1.5 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+              className="bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-lg px-2.5 py-1.5 text-[#F4EFEA] focus:border-[#C89B5C] focus:outline-none placeholder-[#7D776E]"
               required
             />
             <input
@@ -101,7 +101,7 @@ export function SwatchGallery({
               placeholder="Mill (e.g., Scabal, Loro Piana)"
               value={newSwatchMill}
               onChange={(e) => setNewSwatchMill(e.target.value)}
-              className="bg-[#242220] border border-[rgba(214,203,189,0.12)] rounded-lg px-2.5 py-1.5 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+              className="bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-lg px-2.5 py-1.5 text-[#F4EFEA] focus:border-[#C89B5C] focus:outline-none placeholder-[#7D776E]"
             />
           </div>
 
@@ -111,20 +111,20 @@ export function SwatchGallery({
               placeholder="Composition (e.g., Super 150s Wool)"
               value={newSwatchComposition}
               onChange={(e) => setNewSwatchComposition(e.target.value)}
-              className="bg-[#242220] border border-[rgba(214,203,189,0.12)] rounded-lg px-2.5 py-1.5 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+              className="bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-lg px-2.5 py-1.5 text-[#F4EFEA] focus:border-[#C89B5C] focus:outline-none placeholder-[#7D776E]"
             />
             <input
               type="url"
               placeholder="Image URL or photo link"
               value={newSwatchUrl}
               onChange={(e) => setNewSwatchUrl(e.target.value)}
-              className="bg-[#242220] border border-[rgba(214,203,189,0.12)] rounded-lg px-2.5 py-1.5 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+              className="bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-lg px-2.5 py-1.5 text-[#F4EFEA] focus:border-[#C89B5C] focus:outline-none placeholder-[#7D776E]"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-2 rounded-lg bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-semibold text-xs transition-colors"
+            className="w-full py-2 rounded-lg bg-[#C89B5C] hover:bg-[#DFB77B] text-[#13161C] font-bold text-xs transition-colors shadow-md"
           >
             Save Fabric to Archive
           </button>
@@ -133,7 +133,7 @@ export function SwatchGallery({
 
       {/* Swatch Grid or Empty State */}
       {swatches.length === 0 ? (
-        <div className="p-4 rounded-xl bg-[#181715] border border-[rgba(214,203,189,0.08)] text-center text-xs text-[#9E948A]">
+        <div className="p-4 rounded-xl bg-[#1D222A] border border-[rgba(158,152,143,0.18)] text-center text-xs text-[#9E988F]">
           No fabric swatches in archive. Click &quot;Add Swatch&quot; to register bespoke textiles.
         </div>
       ) : (
@@ -145,14 +145,14 @@ export function SwatchGallery({
               <div
                 key={swatch.id}
                 onClick={() => onToggleSwatch && swatch.image_url && onToggleSwatch(swatch.image_url)}
-                className={`relative rounded-xl overflow-hidden border transition-all cursor-pointer group flex flex-col bg-[#1E1D1B] ${
+                className={`relative rounded-xl overflow-hidden border transition-all cursor-pointer group flex flex-col bg-[#1D222A] ${
                   isSelected
-                    ? 'border-[#C89B3C] ring-2 ring-[#C89B3C]/40 shadow-lg'
-                    : 'border-[rgba(214,203,189,0.12)] hover:border-[rgba(214,203,189,0.3)]'
+                    ? 'border-[#C89B5C] ring-2 ring-[#C89B5C]/50 shadow-lg'
+                    : 'border-[rgba(158,152,143,0.18)] hover:border-[#C89B5C]/40'
                 }`}
               >
                 {/* Swatch Image Preview */}
-                <div className="relative h-28 w-full bg-[#242220] overflow-hidden">
+                <div className="relative h-28 w-full bg-[#2E3543] overflow-hidden">
                   {swatch.image_url ? (
                     <img
                       src={swatch.image_url}
@@ -160,21 +160,21 @@ export function SwatchGallery({
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-[#9E948A]">
+                    <div className="w-full h-full flex items-center justify-center text-[#9E988F]">
                       <ImageIcon className="w-6 h-6" />
                     </div>
                   )}
 
                   {/* Selection Checkmark */}
                   {isSelected && (
-                    <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-[#C89B3C] text-[#141312] flex items-center justify-center shadow-md">
+                    <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-[#C89B5C] text-[#13161C] flex items-center justify-center shadow-md">
                       <Check className="w-3.5 h-3.5 stroke-[3]" />
                     </div>
                   )}
 
                   {/* Weight Tag */}
                   {swatch.weight_gsm && (
-                    <div className="absolute bottom-2 left-2 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[9px] font-mono text-[#FAF7F2]">
+                    <div className="absolute bottom-2 left-2 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[9px] font-mono text-[#F4EFEA]">
                       {swatch.weight_gsm}
                     </div>
                   )}
@@ -182,14 +182,14 @@ export function SwatchGallery({
 
                 {/* Swatch Details */}
                 <div className="p-2.5 flex flex-col gap-0.5">
-                  <span className="text-[10px] font-mono uppercase text-[#C89B3C] truncate">
+                  <span className="text-[10px] font-mono uppercase text-[#C89B5C] truncate font-bold">
                     {swatch.mill_name || 'Atelier Weave'}
                   </span>
-                  <h5 className="text-xs font-serif font-bold text-[#FAF7F2] truncate">
+                  <h5 className="text-xs font-serif font-bold text-[#F4EFEA] truncate">
                     {swatch.name}
                   </h5>
                   {swatch.composition && (
-                    <p className="text-[10px] text-[#D3C7B6] line-clamp-1">
+                    <p className="text-[10px] text-[#9E988F] line-clamp-1">
                       {swatch.composition}
                     </p>
                   )}

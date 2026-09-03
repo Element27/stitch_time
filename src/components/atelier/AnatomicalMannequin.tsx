@@ -64,19 +64,19 @@ export function AnatomicalMannequin({
   };
 
   return (
-    <div className="relative w-full max-w-[340px] mx-auto bg-[#181715]/80 rounded-2xl border border-[rgba(214,203,189,0.12)] p-4 flex flex-col items-center select-none shadow-2xl backdrop-blur-sm">
+    <div className="relative w-full max-w-[340px] mx-auto bg-[#1D222A] rounded-2xl border border-[rgba(158,152,143,0.18)] p-4 flex flex-col items-center select-none shadow-2xl backdrop-blur-sm">
       {/* Top Bar with View Switcher */}
       <div className="w-full flex items-center justify-between mb-2">
-        <div className="flex items-center gap-1.5 text-xs text-[#9E948A]">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#C89B3C]" />
-          <span className="font-mono uppercase tracking-wider text-[10px]">Interactive Tailor Form</span>
+        <div className="flex items-center gap-1.5 text-xs text-[#9E988F]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#C89B5C]" />
+          <span className="font-mono uppercase tracking-wider text-[10px] font-semibold">Interactive Tailor Form</span>
         </div>
         <button
           type="button"
           onClick={() => setView(view === 'front' ? 'back' : 'front')}
-          className="inline-flex items-center gap-1 px-2 py-1 rounded bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.1)] text-[11px] font-mono text-[#FAF7F2] transition-colors"
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#2E3543] hover:bg-[#384050] border border-[rgba(158,152,143,0.18)] text-[11px] font-mono text-[#F4EFEA] transition-colors"
         >
-          <RotateCw className="w-3 h-3 text-[#C89B3C]" />
+          <RotateCw className="w-3 h-3 text-[#C89B5C]" />
           <span className="capitalize">{view} View</span>
         </button>
       </div>
@@ -86,7 +86,7 @@ export function AnatomicalMannequin({
         {/* Atelier Mannequin Tailor Grid Lines */}
         <svg
           viewBox="0 0 200 320"
-          className="w-full h-full text-[#9E948A]/20 transition-all duration-300"
+          className="w-full h-full text-[#9E988F]/25 transition-all duration-300"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -97,11 +97,11 @@ export function AnatomicalMannequin({
           <line x1="100" y1="30" x2="100" y2="295" stroke="currentColor" strokeDasharray="2 4" strokeWidth="0.5" />
 
           {/* Haute Couture Mannequin Body Path */}
-          <g stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" className="text-[#D3C7B6]/40">
+          <g stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" className="text-[#9E988F]/50">
             {/* Head / Neck Stand */}
-            <circle cx="100" cy="22" r="7" className="fill-[#1A1917] stroke-[#C89B3C]/50" />
-            <line x1="100" y1="29" x2="100" y2="44" stroke="#C89B3C]/50" strokeWidth="1.5" />
-            <ellipse cx="100" cy="46" rx="14" ry="4" className="fill-[#242220] stroke-[#D3C7B6]/40" />
+            <circle cx="100" cy="22" r="7" className="fill-[#13161C] stroke-[#C89B5C]/60" />
+            <line x1="100" y1="29" x2="100" y2="44" stroke="#C89B5C]/60" strokeWidth="1.5" />
+            <ellipse cx="100" cy="46" rx="14" ry="4" className="fill-[#2E3543] stroke-[#9E988F]/50" />
 
             {/* Torso Silhouette */}
             <path
@@ -129,15 +129,15 @@ export function AnatomicalMannequin({
                 C 152 62, 128 50, 114 46
                 Z
               "
-              className="fill-[#1A1917]/70"
+              className="fill-[#13161C]/80"
             />
 
             {/* Bespoke Tailor Seam Lines (Princess seams / Chest balance) */}
-            <path d="M 76 56 Q 74 100 78 140 Q 82 170 80 200" strokeWidth="0.75" strokeDasharray="2 2" className="stroke-[#C89B3C]/30" />
-            <path d="M 124 56 Q 126 100 122 140 Q 118 170 120 200" strokeWidth="0.75" strokeDasharray="2 2" className="stroke-[#C89B3C]/30" />
+            <path d="M 76 56 Q 74 100 78 140 Q 82 170 80 200" strokeWidth="0.75" strokeDasharray="2 2" className="stroke-[#C89B5C]/40" />
+            <path d="M 124 56 Q 126 100 122 140 Q 118 170 120 200" strokeWidth="0.75" strokeDasharray="2 2" className="stroke-[#C89B5C]/40" />
             {/* Wooden Base Stand */}
-            <line x1="100" y1="290" x2="100" y2="310" stroke="#C89B3C]/60" strokeWidth="2.5" />
-            <ellipse cx="100" cy="312" rx="30" ry="5" className="fill-[#242220] stroke-[#C89B3C]/60" />
+            <line x1="100" y1="290" x2="100" y2="310" stroke="#C89B5C]/60" strokeWidth="2.5" />
+            <ellipse cx="100" cy="312" rx="30" ry="5" className="fill-[#2E3543] stroke-[#C89B5C]/60" />
           </g>
         </svg>
 
@@ -161,26 +161,26 @@ export function AnatomicalMannequin({
               >
                 {/* Outer Glow Pulse for Selected Point */}
                 {isSelected && (
-                  <span className="absolute inset-0 rounded-full bg-[#C89B3C] animate-ping opacity-60 pointer-events-none" />
+                  <span className="absolute inset-0 rounded-full bg-[#C89B5C] animate-ping opacity-60 pointer-events-none" />
                 )}
 
                 {/* Pinpoint Dot */}
                 <span
                   className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center transition-all ${
                     isSelected
-                      ? 'bg-[#C89B3C] border-[#FAF7F2] scale-125 shadow-lg shadow-[#C89B3C]/50 ring-2 ring-[#C89B3C]/30'
+                      ? 'bg-[#C89B5C] border-[#F4EFEA] scale-125 shadow-lg shadow-[#C89B5C]/50 ring-2 ring-[#C89B5C]/40'
                       : hasValue
-                      ? 'bg-[#242220] border-[#C89B3C] text-[#E0BA62]'
-                      : 'bg-[#1E1D1B] border-[rgba(214,203,189,0.3)] hover:border-[#C89B3C]'
+                      ? 'bg-[#2E3543] border-[#C89B5C] text-[#C89B5C]'
+                      : 'bg-[#1D222A] border-[rgba(158,152,143,0.3)] hover:border-[#C89B5C]'
                   }`}
                 >
                   <span
                     className={`w-1.5 h-1.5 rounded-full ${
                       isSelected
-                        ? 'bg-[#141312]'
+                        ? 'bg-[#13161C]'
                         : hasValue
-                        ? 'bg-[#C89B3C]'
-                        : 'bg-[#9E948A]/50'
+                        ? 'bg-[#C89B5C]'
+                        : 'bg-[#9E988F]/50'
                     }`}
                   />
                 </span>
@@ -188,10 +188,10 @@ export function AnatomicalMannequin({
                 {/* Floating Tabular Number Badge */}
                 {hasValue && (
                   <span
-                    className={`absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-1.5 py-0.2 text-[10px] font-mono font-semibold rounded pointer-events-none border transition-colors ${
+                    className={`absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-1.5 py-0.2 text-[10px] font-mono font-bold rounded pointer-events-none border transition-colors ${
                       isSelected
-                        ? 'bg-[#C89B3C] text-[#141312] border-[#FAF7F2] shadow-sm'
-                        : 'bg-[#1E1D1B]/90 text-[#FAF7F2] border-[#C89B3C]/40'
+                        ? 'bg-[#C89B5C] text-[#13161C] border-[#F4EFEA] shadow-md'
+                        : 'bg-[#13161C]/95 text-[#F4EFEA] border-[#C89B5C]/50'
                     }`}
                   >
                     {formatMeasurement(match?.val, unit)}
@@ -204,16 +204,16 @@ export function AnatomicalMannequin({
       </div>
 
       {/* Selected Measurement Quick Glance Bar */}
-      <div className="w-full mt-2 pt-2.5 border-t border-[rgba(214,203,189,0.1)] flex items-center justify-between">
+      <div className="w-full mt-2 pt-2.5 border-t border-[rgba(158,152,143,0.18)] flex items-center justify-between">
         <div className="flex flex-col">
-          <span className="text-[10px] uppercase font-mono text-[#9E948A]">Target Node</span>
-          <span className="text-xs font-serif font-medium text-[#FAF7F2] truncate max-w-[170px]">
+          <span className="text-[10px] uppercase font-mono font-semibold text-[#9E988F]">Target Node</span>
+          <span className="text-xs font-serif font-bold text-[#F4EFEA] truncate max-w-[170px]">
             {selectedField || 'Tap pinpoint on mannequin'}
           </span>
         </div>
         <div className="text-right">
-          <span className="text-[10px] uppercase font-mono text-[#9E948A]">Value</span>
-          <div className="text-sm font-mono font-bold text-[#E0BA62] tnum">
+          <span className="text-[10px] uppercase font-mono font-semibold text-[#9E988F]">Value</span>
+          <div className="text-sm font-mono font-bold text-[#C89B5C] tnum">
             {selectedField && values[selectedField] !== undefined
               ? formatMeasurement(values[selectedField], unit)
               : '—'}

@@ -12,8 +12,8 @@ interface MeasurementCompareProps {
 export function MeasurementCompare({ logs }: MeasurementCompareProps) {
   if (!logs || logs.length < 2) {
     return (
-      <div className="p-4 rounded-xl bg-[#1E1D1B] border border-[rgba(214,203,189,0.1)] text-center text-xs text-[#9E948A]">
-        <History className="w-5 h-5 mx-auto mb-2 text-[#C89B3C]/50" />
+      <div className="p-4 rounded-xl bg-[#1D222A] border border-[rgba(158,152,143,0.18)] text-center text-xs text-[#9E988F]">
+        <History className="w-5 h-5 mx-auto mb-2 text-[#C89B5C]/60" />
         <p>Record at least two fitting logs to view historical body delta comparisons.</p>
       </div>
     );
@@ -31,15 +31,15 @@ export function MeasurementCompare({ logs }: MeasurementCompareProps) {
   );
 
   return (
-    <div className="w-full bg-[#181715] rounded-2xl border border-[rgba(214,203,189,0.14)] p-4 flex flex-col gap-4 shadow-xl">
-      <div className="flex items-center justify-between border-b border-[rgba(214,203,189,0.1)] pb-3">
+    <div className="w-full bg-[#1D222A] rounded-2xl border border-[rgba(158,152,143,0.18)] p-4 flex flex-col gap-4 shadow-xl">
+      <div className="flex items-center justify-between border-b border-[rgba(158,152,143,0.18)] pb-3">
         <div className="flex items-center gap-2">
-          <GitCompare className="w-4 h-4 text-[#C89B3C]" />
-          <h3 className="text-sm font-serif font-bold text-[#FAF7F2]">
+          <GitCompare className="w-4 h-4 text-[#C89B5C]" />
+          <h3 className="text-sm font-serif font-bold text-[#F4EFEA]">
             Fitting Session Version Diff
           </h3>
         </div>
-        <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#242220] text-[#E0BA62]">
+        <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#2E3543] text-[#C89B5C] font-bold border border-[rgba(158,152,143,0.18)]">
           {allFields.length} Comparison Points
         </span>
       </div>
@@ -47,13 +47,13 @@ export function MeasurementCompare({ logs }: MeasurementCompareProps) {
       {/* Selectors for Base vs Target Session */}
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+          <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
             Baseline Fitting
           </label>
           <select
             value={baseLogId}
             onChange={(e) => setBaseLogId(e.target.value)}
-            className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-lg px-2.5 py-1.5 text-xs text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
+            className="w-full bg-[#2E3543] border border-[rgba(158,152,143,0.18)] rounded-lg px-2.5 py-1.5 text-xs text-[#F4EFEA] font-mono focus:border-[#C89B5C] focus:outline-none"
           >
             {logs.map((log) => (
               <option key={log.id} value={log.id}>
@@ -64,13 +64,13 @@ export function MeasurementCompare({ logs }: MeasurementCompareProps) {
         </div>
 
         <div>
-          <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+          <label className="text-[10px] font-mono uppercase text-[#9E988F] font-semibold block mb-1">
             Target Adjustment
           </label>
           <select
             value={targetLogId}
             onChange={(e) => setTargetLogId(e.target.value)}
-            className="w-full bg-[#242220] border border-[#C89B3C]/60 rounded-lg px-2.5 py-1.5 text-xs text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
+            className="w-full bg-[#2E3543] border border-[#C89B5C]/60 rounded-lg px-2.5 py-1.5 text-xs text-[#F4EFEA] font-mono focus:border-[#C89B5C] focus:outline-none"
           >
             {logs.map((log) => (
               <option key={log.id} value={log.id}>
@@ -96,40 +96,40 @@ export function MeasurementCompare({ logs }: MeasurementCompareProps) {
           return (
             <div
               key={field}
-              className="flex items-center justify-between p-2.5 rounded-xl bg-[#1E1D1B] hover:bg-[#242220] border border-[rgba(214,203,189,0.12)] transition-colors text-xs"
+              className="flex items-center justify-between p-2.5 rounded-xl bg-[#2E3543] hover:bg-[#384050] border border-[rgba(158,152,143,0.18)] transition-colors text-xs"
             >
-              <span className="font-medium text-[#FAF7F2] max-w-[140px] truncate">{field}</span>
+              <span className="font-medium text-[#F4EFEA] max-w-[140px] truncate">{field}</span>
 
               <div className="flex items-center gap-3 font-mono tnum">
                 {/* Base Value */}
-                <span className="text-[#D3C7B6] font-medium">
+                <span className="text-[#9E988F] font-medium">
                   {formatMeasurement(val1, baseLog.unit)}
                 </span>
 
-                <span className="text-[10px] text-[#FAF7F2]/60">→</span>
+                <span className="text-[10px] text-[#F4EFEA]/60">→</span>
 
                 {/* Target Value */}
-                <span className="text-[#E0BA62] font-bold">
+                <span className="text-[#C89B5C] font-bold">
                   {formatMeasurement(val2, targetLog.unit)}
                 </span>
 
                 {/* Delta Pill */}
                 {delta !== null ? (
                   delta === 0 ? (
-                    <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-[10px] bg-[#242220] border border-[rgba(214,203,189,0.1)] text-[#D3C7B6] font-bold">
+                    <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-[10px] bg-[#13161C] border border-[rgba(158,152,143,0.18)] text-[#9E988F] font-bold">
                       <Minus className="w-2.5 h-2.5" /> 0.0
                     </span>
                   ) : delta > 0 ? (
-                    <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-[10px] bg-amber-950/80 text-amber-200 border border-amber-500/50 font-bold">
+                    <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-[10px] bg-[#E28743]/20 text-[#E28743] border border-[#E28743]/50 font-bold">
                       <ArrowUpRight className="w-2.5 h-2.5" /> +{delta}&quot;
                     </span>
                   ) : (
-                    <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-[10px] bg-emerald-950/80 text-emerald-200 border border-emerald-500/50 font-bold">
+                    <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-[10px] bg-[#3E7B5C]/20 text-[#3E7B5C] border border-[#3E7B5C]/50 font-bold">
                       <ArrowDownRight className="w-2.5 h-2.5" /> {delta}&quot;
                     </span>
                   )
                 ) : (
-                  <span className="text-[10px] text-[#8E847A]">—</span>
+                  <span className="text-[10px] text-[#7D776E]">—</span>
                 )}
               </div>
             </div>

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#141312",
+  themeColor: "#13161C",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -36,40 +36,40 @@ export default function RootLayout({
   const content = <ClientProviders>{children}</ClientProviders>;
 
   return (
-    <html lang="en" className="h-full bg-[#141312] text-[#FAF7F2] antialiased selection:bg-[#C89B3C]/30 selection:text-[#FAF7F2]">
+    <html lang="en" className="h-full bg-[#13161C] text-[#F4EFEA] antialiased selection:bg-[#C89B5C]/30 selection:text-[#F4EFEA]">
       <head>
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
-      <body className="min-h-full flex flex-col bg-[#141312] text-[#FAF7F2] font-sans">
+      <body className="min-h-full flex flex-col bg-[#13161C] text-[#F4EFEA] font-sans">
         {hasClerkKey ? (
           <ClerkProvider
             appearance={{
               variables: {
-                colorPrimary: '#C89B3C',
-                colorBackground: '#181715',
-                colorNeutral: '#FAF7F2',
+                colorPrimary: '#C89B5C',
+                colorBackground: '#1D222A',
+                colorNeutral: '#F4EFEA',
               },
               elements: {
-                card: 'bg-[#181715] border border-[rgba(214,203,189,0.18)] shadow-2xl rounded-2xl text-[#FAF7F2]',
-                headerTitle: 'font-serif text-[#FAF7F2] text-xl font-bold',
-                headerSubtitle: 'text-[#D3C7B6]',
-                formFieldLabel: 'text-[#D3C7B6] font-mono text-xs',
-                formFieldInput: 'bg-[#242220] border border-[rgba(214,203,189,0.2)] text-[#FAF7F2] focus:border-[#C89B3C]',
-                socialButtonsBlockButton: 'bg-[#242220] border border-[rgba(214,203,189,0.18)] text-[#FAF7F2] hover:bg-[#2E2B27]',
-                socialButtonsBlockButtonText: 'text-[#FAF7F2] font-medium',
-                dividerLine: 'bg-[rgba(214,203,189,0.15)]',
-                dividerText: 'text-[#D3C7B6] font-mono text-xs',
-                formButtonPrimary: 'bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-semibold font-mono',
-                footerActionText: 'text-[#D3C7B6]',
-                footerActionLink: 'text-[#E0BA62] hover:text-[#FAF7F2]',
-                identityPreviewText: 'text-[#FAF7F2]',
-                identityPreviewEditButton: 'text-[#E0BA62]',
-                userButtonPopoverCard: 'bg-[#181715] border border-[rgba(214,203,189,0.18)] shadow-2xl text-[#FAF7F2]',
-                userButtonPopoverActionButton: 'text-[#FAF7F2] hover:bg-[#242220]',
-                userButtonPopoverActionButtonText: 'text-[#FAF7F2]',
-                userButtonPopoverActionButtonIcon: 'text-[#C89B3C]',
-                userPreviewMainIdentifier: 'text-[#FAF7F2] font-medium',
-                userPreviewSecondaryIdentifier: 'text-[#D3C7B6]',
+                card: 'bg-[#1D222A] border border-[rgba(158,152,143,0.18)] shadow-2xl rounded-2xl text-[#F4EFEA]',
+                headerTitle: 'font-serif text-[#F4EFEA] text-xl font-bold',
+                headerSubtitle: 'text-[#9E988F]',
+                formFieldLabel: 'text-[#9E988F] font-mono text-xs',
+                formFieldInput: 'bg-[#2E3543] border border-[rgba(158,152,143,0.25)] text-[#F4EFEA] focus:border-[#C89B5C]',
+                socialButtonsBlockButton: 'bg-[#2E3543] border border-[rgba(158,152,143,0.18)] text-[#F4EFEA] hover:bg-[#384050]',
+                socialButtonsBlockButtonText: 'text-[#F4EFEA] font-medium',
+                dividerLine: 'bg-[rgba(158,152,143,0.18)]',
+                dividerText: 'text-[#9E988F] font-mono text-xs',
+                formButtonPrimary: 'bg-[#C89B5C] hover:bg-[#DFB77B] text-[#13161C] font-semibold font-mono shadow-md',
+                footerActionText: 'text-[#9E988F]',
+                footerActionLink: 'text-[#C89B5C] hover:text-[#F4EFEA]',
+                identityPreviewText: 'text-[#F4EFEA]',
+                identityPreviewEditButton: 'text-[#C89B5C]',
+                userButtonPopoverCard: 'bg-[#1D222A] border border-[rgba(158,152,143,0.18)] shadow-2xl text-[#F4EFEA]',
+                userButtonPopoverActionButton: 'text-[#F4EFEA] hover:bg-[#2E3543]',
+                userButtonPopoverActionButtonText: 'text-[#F4EFEA]',
+                userButtonPopoverActionButtonIcon: 'text-[#C89B5C]',
+                userPreviewMainIdentifier: 'text-[#F4EFEA] font-medium',
+                userPreviewSecondaryIdentifier: 'text-[#9E988F]',
               },
             }}
           >
