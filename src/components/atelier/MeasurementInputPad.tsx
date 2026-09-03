@@ -73,14 +73,14 @@ export function MeasurementInputPad({
       <div className="flex items-center justify-between border-b border-[rgba(214,203,189,0.1)] pb-2.5">
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
-            <span className="text-[10px] uppercase font-mono tracking-wider text-[#C89B3C]">
+            <span className="text-[10px] uppercase font-mono tracking-wider font-bold text-[#E0BA62]">
               Point {fieldIndex + 1} of {totalFields}
             </span>
-            <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#242220] text-[#9E948A] uppercase">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#242220] border border-[rgba(214,203,189,0.15)] text-[#FAF7F2] uppercase font-semibold">
               {unit}
             </span>
           </div>
-          <h3 className="text-base font-serif font-semibold text-[#FAF7F2] truncate max-w-[220px]">
+          <h3 className="text-base font-serif font-bold text-[#FAF7F2] truncate max-w-[220px]">
             {fieldName}
           </h3>
         </div>
@@ -91,7 +91,7 @@ export function MeasurementInputPad({
             type="button"
             onClick={onPrev}
             disabled={fieldIndex === 0}
-            className="p-2 rounded-lg bg-[#242220] hover:bg-[#2E2B27] disabled:opacity-30 text-[#FAF7F2] transition-colors"
+            className="p-2 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.15)] disabled:opacity-30 text-[#FAF7F2] transition-colors"
             title="Previous measurement point"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -100,7 +100,7 @@ export function MeasurementInputPad({
             type="button"
             onClick={onNext}
             disabled={fieldIndex >= totalFields - 1}
-            className="p-2 rounded-lg bg-[#242220] hover:bg-[#2E2B27] disabled:opacity-30 text-[#FAF7F2] transition-colors"
+            className="p-2 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.15)] disabled:opacity-30 text-[#FAF7F2] transition-colors"
             title="Next measurement point"
           >
             <ChevronRight className="w-4 h-4" />
@@ -109,13 +109,13 @@ export function MeasurementInputPad({
       </div>
 
       {/* Main Measurement Readout Display */}
-      <div className="relative w-full bg-[#141312] border border-[#C89B3C]/30 rounded-xl p-3 flex items-center justify-between glow-brass-sm">
+      <div className="relative w-full bg-[#141312] border border-[#C89B3C]/50 rounded-xl p-3.5 flex items-center justify-between glow-brass-sm">
         <div className="flex items-baseline gap-2 overflow-x-auto">
           <span className="text-3xl font-mono font-bold text-[#FAF7F2] tracking-tight tnum">
             {strVal ? formatMeasurement(strVal, unit) : '0.00'}
           </span>
           {strVal && unit === 'inches' && (
-            <span className="text-xs font-mono text-[#9E948A] hidden sm:inline">
+            <span className="text-xs font-mono text-[#D3C7B6] hidden sm:inline font-medium">
               ({strVal}&quot;)
             </span>
           )}
@@ -126,7 +126,7 @@ export function MeasurementInputPad({
             <button
               type="button"
               onClick={handleClear}
-              className="text-[11px] font-mono uppercase px-2 py-1 rounded bg-[#242220] text-[#9E948A] hover:text-[#FAF7F2]"
+              className="text-[11px] font-mono uppercase px-2.5 py-1 rounded-lg bg-[#242220] border border-[rgba(214,203,189,0.15)] text-[#D3C7B6] hover:text-[#FAF7F2] font-semibold"
             >
               Clear
             </button>
@@ -139,35 +139,35 @@ export function MeasurementInputPad({
         <button
           type="button"
           onClick={() => handleQuickAdd(-0.5)}
-          className="flex-1 py-1.5 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.1)] text-xs font-mono font-medium text-[#FAF7F2] transition-transform active:scale-95"
+          className="flex-1 py-1.5 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.15)] text-xs font-mono font-bold text-[#FAF7F2] transition-transform active:scale-95"
         >
           -0.5
         </button>
         <button
           type="button"
           onClick={() => handleQuickAdd(-0.25)}
-          className="flex-1 py-1.5 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.1)] text-xs font-mono font-medium text-[#FAF7F2] transition-transform active:scale-95"
+          className="flex-1 py-1.5 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.15)] text-xs font-mono font-bold text-[#FAF7F2] transition-transform active:scale-95"
         >
           -0.25
         </button>
         <button
           type="button"
           onClick={() => handleQuickAdd(0.25)}
-          className="flex-1 py-1.5 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[#C89B3C]/30 text-xs font-mono font-medium text-[#E0BA62] transition-transform active:scale-95"
+          className="flex-1 py-1.5 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[#C89B3C]/50 text-xs font-mono font-bold text-[#E0BA62] transition-transform active:scale-95"
         >
           +0.25
         </button>
         <button
           type="button"
           onClick={() => handleQuickAdd(0.5)}
-          className="flex-1 py-1.5 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[#C89B3C]/30 text-xs font-mono font-medium text-[#E0BA62] transition-transform active:scale-95"
+          className="flex-1 py-1.5 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[#C89B3C]/50 text-xs font-mono font-bold text-[#E0BA62] transition-transform active:scale-95"
         >
           +0.5
         </button>
         <button
           type="button"
           onClick={() => handleQuickAdd(1.0)}
-          className="flex-1 py-1.5 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[#C89B3C]/30 text-xs font-mono font-medium text-[#E0BA62] transition-transform active:scale-95"
+          className="flex-1 py-1.5 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[#C89B3C]/50 text-xs font-mono font-bold text-[#E0BA62] transition-transform active:scale-95"
         >
           +1.0
         </button>
@@ -186,7 +186,7 @@ export function MeasurementInputPad({
               key={item.label}
               type="button"
               onClick={() => handleAddFraction(item.val)}
-              className="py-1.5 rounded-lg bg-[#1E1D1B] hover:bg-[#272523] border border-[rgba(214,203,189,0.1)] text-xs font-serif font-bold text-[#E5DCD0] transition-colors active:scale-95"
+              className="py-1.5 rounded-lg bg-[#1E1D1B] hover:bg-[#272523] border border-[rgba(214,203,189,0.15)] text-xs font-serif font-bold text-[#FAF7F2] transition-colors active:scale-95"
             >
               +{item.label}&quot;
             </button>
@@ -201,7 +201,7 @@ export function MeasurementInputPad({
             key={digit}
             type="button"
             onClick={() => handleDigit(digit)}
-            className="h-12 rounded-xl bg-[#242220] hover:bg-[#2E2B27] active:bg-[#C89B3C]/20 border border-[rgba(214,203,189,0.12)] text-xl font-mono font-medium text-[#FAF7F2] flex items-center justify-center transition-transform active:scale-95 shadow-sm"
+            className="h-12 rounded-xl bg-[#242220] hover:bg-[#2E2B27] active:bg-[#C89B3C]/20 border border-[rgba(214,203,189,0.16)] text-xl font-mono font-bold text-[#FAF7F2] flex items-center justify-center transition-transform active:scale-95 shadow-sm"
           >
             {digit}
           </button>
@@ -209,21 +209,21 @@ export function MeasurementInputPad({
         <button
           type="button"
           onClick={handleDecimal}
-          className="h-12 rounded-xl bg-[#1E1D1B] hover:bg-[#272523] active:bg-[#C89B3C]/20 border border-[rgba(214,203,189,0.12)] text-xl font-mono font-bold text-[#9E948A] flex items-center justify-center transition-transform active:scale-95"
+          className="h-12 rounded-xl bg-[#1E1D1B] hover:bg-[#272523] active:bg-[#C89B3C]/20 border border-[rgba(214,203,189,0.16)] text-xl font-mono font-bold text-[#FAF7F2] flex items-center justify-center transition-transform active:scale-95"
         >
           .
         </button>
         <button
           type="button"
           onClick={() => handleDigit('0')}
-          className="h-12 rounded-xl bg-[#242220] hover:bg-[#2E2B27] active:bg-[#C89B3C]/20 border border-[rgba(214,203,189,0.12)] text-xl font-mono font-medium text-[#FAF7F2] flex items-center justify-center transition-transform active:scale-95 shadow-sm"
+          className="h-12 rounded-xl bg-[#242220] hover:bg-[#2E2B27] active:bg-[#C89B3C]/20 border border-[rgba(214,203,189,0.16)] text-xl font-mono font-bold text-[#FAF7F2] flex items-center justify-center transition-transform active:scale-95 shadow-sm"
         >
           0
         </button>
         <button
           type="button"
           onClick={handleBackspace}
-          className="h-12 rounded-xl bg-[#2A1E1E] hover:bg-[#382626] border border-red-500/20 text-red-300 flex items-center justify-center transition-transform active:scale-95"
+          className="h-12 rounded-xl bg-[#2A1E1E] hover:bg-[#382626] border border-red-500/30 text-red-300 flex items-center justify-center transition-transform active:scale-95 font-bold"
           title="Backspace"
         >
           <Delete className="w-5 h-5" />

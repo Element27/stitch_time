@@ -383,39 +383,38 @@ export const INITIAL_ORDERS: Omit<Order, 'user_id'>[] = [
   }
 ];
 
+export const MOCK_RECORD_IDS = {
+  clients: ['client_01_valerie', 'client_02_marcus', 'client_03_camille', 'client_04_daisuke'],
+  orders: ['order_01_sterling_tuxedo', 'order_02_valerie_gown', 'order_03_daisuke_linen', 'order_04_camille_corset'],
+  logs: ['log_01_julian_initial', 'log_02_julian_baste_check', 'log_03_valerie_gown']
+};
+
+export async function purgePlaceholderData() {
+  try {
+    await db.clients.bulkDelete(MOCK_RECORD_IDS.clients);
+    await db.orders.bulkDelete(MOCK_RECORD_IDS.orders);
+    await db.measurement_logs.bulkDelete(MOCK_RECORD_IDS.logs);
+  } catch (err) {
+    console.warn('Placeholder purge note:', err);
+  }
+}
+
 export async function seedDatabaseIfEmpty(userId: string = 'user_default_atelier') {
   try {
-    const clientCount = await db.clients.count();
-    if (clientCount === 0) {
-      console.log('Seeding initial bespoke atelier data...');
+    // 1. Purge legacy placeholder sample data if present in IndexedDB
+    await purgePlaceholderData();
 
-      // 1. Seed Templates
+    // 2. Seed standard Measurement Templates only if table is completely empty
+    const templateCount = await db.measurement_templates.count();
+    if (templateCount === 0) {
       const templatesToInsert = DEFAULT_TEMPLATES.map((tmpl) => ({
         ...tmpl,
         user_id: userId
       })) as MeasurementTemplate[];
       await db.measurement_templates.bulkPut(templatesToInsert);
-
-      // 2. Seed Clients
-      const clientsToInsert = INITIAL_CLIENTS.map((c) => ({
-        ...c,
-        user_id: userId
-      })) as Client[];
-      await db.clients.bulkPut(clientsToInsert);
-
-      // 3. Seed Measurement Logs
-      await db.measurement_logs.bulkPut(INITIAL_MEASUREMENT_LOGS);
-
-      // 4. Seed Orders
-      const ordersToInsert = INITIAL_ORDERS.map((o) => ({
-        ...o,
-        user_id: userId
-      })) as Order[];
-      await db.orders.bulkPut(ordersToInsert);
-
-      console.log('Atelier database successfully seeded with bespoke presets.');
     }
   } catch (err) {
-    console.error('Failed to seed atelier database:', err);
+    console.error('Failed to initialize atelier database templates:', err);
   }
 }
+

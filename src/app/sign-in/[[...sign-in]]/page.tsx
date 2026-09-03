@@ -28,15 +28,27 @@ export default function SignInPage() {
         {hasClerkKey ? (
           <SignIn
             appearance={{
+              variables: {
+                colorPrimary: '#C89B3C',
+                colorBackground: '#181715',
+                colorNeutral: '#FAF7F2',
+              },
               elements: {
                 rootBox: 'w-full',
-                card: 'bg-[#181715] border border-[rgba(214,203,189,0.15)] shadow-2xl rounded-2xl',
-                headerTitle: 'font-serif text-[#FAF7F2]',
-                headerSubtitle: 'text-[#9E948A]',
-                socialButtonsBlockButton: 'bg-[#242220] border-[rgba(214,203,189,0.12)] text-[#FAF7F2]',
-                formButtonPrimary: 'bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312]',
-                formFieldInput: 'bg-[#141312] border-[rgba(214,203,189,0.15)] text-[#FAF7F2]',
-                footerActionLink: 'text-[#E0BA62] hover:underline',
+                card: 'bg-[#181715] border border-[rgba(214,203,189,0.18)] shadow-2xl rounded-2xl text-[#FAF7F2]',
+                headerTitle: 'font-serif text-[#FAF7F2] text-xl font-bold',
+                headerSubtitle: 'text-[#D3C7B6]',
+                formFieldLabel: 'text-[#D3C7B6] font-mono text-xs',
+                formFieldInput: 'bg-[#242220] border border-[rgba(214,203,189,0.2)] text-[#FAF7F2] focus:border-[#C89B3C]',
+                socialButtonsBlockButton: 'bg-[#242220] border border-[rgba(214,203,189,0.18)] text-[#FAF7F2] hover:bg-[#2E2B27]',
+                socialButtonsBlockButtonText: 'text-[#FAF7F2] font-medium',
+                dividerLine: 'bg-[rgba(214,203,189,0.15)]',
+                dividerText: 'text-[#D3C7B6] font-mono text-xs',
+                formButtonPrimary: 'bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-semibold font-mono',
+                footerActionText: 'text-[#D3C7B6]',
+                footerActionLink: 'text-[#E0BA62] hover:text-[#FAF7F2]',
+                identityPreviewText: 'text-[#FAF7F2]',
+                identityPreviewEditButton: 'text-[#E0BA62]',
               },
             }}
           />

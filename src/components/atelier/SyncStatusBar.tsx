@@ -93,7 +93,7 @@ export function SyncStatusBar({ compact = false }: { compact?: boolean }) {
         )}
 
         {syncState.lastSyncedAt && (
-          <span className="text-[#9E948A] hidden sm:inline">
+          <span className="text-[#D3C7B6] font-mono text-[11px] hidden sm:inline">
             Last sync: {formatTimeAgo(syncState.lastSyncedAt.toISOString())}
           </span>
         )}
@@ -103,10 +103,10 @@ export function SyncStatusBar({ compact = false }: { compact?: boolean }) {
         <button
           onClick={toggleOffline}
           className={cn(
-            "px-2.5 py-1 rounded text-[11px] font-medium transition-colors border",
+            "px-2.5 py-1 rounded text-[11px] font-mono font-medium transition-colors border",
             syncState.offlineSimulation
-              ? "bg-amber-950/60 border-amber-500/50 text-amber-300"
-              : "bg-[#242220] border-[rgba(214,203,189,0.12)] text-[#9E948A] hover:text-[#FAF7F2]"
+              ? "bg-amber-950/70 border-amber-500/60 text-amber-200"
+              : "bg-[#242220] border-[rgba(214,203,189,0.18)] text-[#D3C7B6] hover:text-[#FAF7F2]"
           )}
         >
           {syncState.offlineSimulation ? "Simulating Offline (Click to Reconnect)" : "Simulate Offline"}
