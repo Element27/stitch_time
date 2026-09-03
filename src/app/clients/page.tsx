@@ -89,97 +89,113 @@ export default function ClientsPage() {
 
         {/* Real-time Search */}
         <div className="relative">
-          <Search className="w-4 h-4 text-[#9E948A] absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[#D3C7B6] absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Search patrons by name, phone, email, fit notes..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#181715] border border-[rgba(214,203,189,0.12)] rounded-xl pl-10 pr-4 py-2.5 text-xs text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+            className="w-full bg-[#181715] border border-[rgba(214,203,189,0.18)] rounded-xl pl-10 pr-4 py-2.5 text-xs text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
           />
         </div>
 
         {/* Client Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {filteredClients.map((client) => {
-            const clientLogs = measurementLogs.filter((l) => l.client_id === client.id);
-            const clientOrders = orders.filter((o) => o.client_id === client.id);
+        {filteredClients.length === 0 ? (
+          <div className="p-10 text-center rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.12)] flex flex-col items-center gap-3 text-xs text-[#D3C7B6]">
+            <Users className="w-8 h-8 text-[#C89B3C] mx-auto" />
+            <p className="font-serif text-sm text-[#FAF7F2]">No Bespoke Patrons Found</p>
+            <p className="text-xs text-[#B8ADA0]">Register your first client to begin logging fittings and commissions.</p>
+            <button
+              type="button"
+              onClick={() => setShowAddClientSheet(true)}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-bold text-xs transition-all shadow-md mt-1"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Register First Patron</span>
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {filteredClients.map((client) => {
+              const clientLogs = measurementLogs.filter((l) => l.client_id === client.id);
+              const clientOrders = orders.filter((o) => o.client_id === client.id);
 
-            return (
-              <div
-                key={client.id}
-                className="p-4 rounded-2xl bg-[#181715] hover:bg-[#1E1D1B] border border-[rgba(214,203,189,0.12)] hover:border-[#C89B3C]/40 transition-all flex flex-col justify-between gap-3 group"
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-full bg-[#242220] border border-[rgba(214,203,189,0.2)] flex items-center justify-center font-mono font-bold text-xs text-[#E0BA62] overflow-hidden flex-shrink-0">
-                      {client.avatar_url ? (
-                        <img
-                          src={client.avatar_url}
-                          alt={client.full_name}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        getInitials(client.full_name)
-                      )}
-                    </div>
-
-                    <div>
-                      <div className="flex items-center gap-1.5">
-                        <Link
-                          href={`/clients/${client.id}`}
-                          className="text-base font-serif font-bold text-[#FAF7F2] group-hover:text-[#E0BA62] transition-colors hover:underline"
-                        >
-                          {client.full_name}
-                        </Link>
-                        {client.vip_status && (
-                          <Star className="w-3.5 h-3.5 text-[#C89B3C] fill-[#C89B3C]" />
+              return (
+                <div
+                  key={client.id}
+                  className="p-4 rounded-2xl bg-[#181715] hover:bg-[#1E1D1B] border border-[rgba(214,203,189,0.14)] hover:border-[#C89B3C]/50 transition-all flex flex-col justify-between gap-3 group shadow-md"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-center gap-3">
+                      <div className="w-11 h-11 rounded-full bg-[#242220] border-2 border-[rgba(214,203,189,0.25)] flex items-center justify-center font-mono font-bold text-xs text-[#E0BA62] overflow-hidden flex-shrink-0">
+                        {client.avatar_url ? (
+                          <img
+                            src={client.avatar_url}
+                            alt={client.full_name}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          getInitials(client.full_name)
                         )}
                       </div>
-                      <p className="text-[11px] font-mono text-[#9E948A]">
-                        Joined {formatDate(client.created_at)}
-                      </p>
+
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <Link
+                            href={`/clients/${client.id}`}
+                            className="text-base font-serif font-bold text-[#FAF7F2] group-hover:text-[#E0BA62] transition-colors hover:underline"
+                          >
+                            {client.full_name}
+                          </Link>
+                          {client.vip_status && (
+                            <Star className="w-3.5 h-3.5 text-[#C89B3C] fill-[#C89B3C]" />
+                          )}
+                        </div>
+                        <p className="text-[11px] font-mono text-[#D3C7B6]">
+                          Joined {formatDate(client.created_at)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {client.notes && (
+                    <p className="text-xs text-[#FAF7F2] line-clamp-2 bg-[#141312] p-2.5 rounded-lg border border-[rgba(214,203,189,0.1)] font-mono leading-relaxed">
+                      {client.notes}
+                    </p>
+                  )}
+
+                  {/* Contact & Fitting Counts */}
+                  <div className="flex items-center justify-between pt-2 border-t border-[rgba(214,203,189,0.1)] text-xs">
+                    <div className="flex items-center gap-3 text-[#D3C7B6] text-[11px] font-mono font-medium">
+                      <span className="flex items-center gap-1">
+                        <Ruler className="w-3 h-3 text-[#C89B3C]" /> {clientLogs.length} fits
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Scissors className="w-3 h-3 text-[#C89B3C]" /> {clientOrders.length} orders
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-1.5">
+                      <Link
+                        href={`/fittings/new?clientId=${client.id}`}
+                        className="px-2.5 py-1 rounded-lg bg-[#242220] hover:bg-[#C89B3C] text-[#FAF7F2] hover:text-[#141312] text-xs font-mono font-semibold transition-colors"
+                        title="Measure Client"
+                      >
+                        Measure
+                      </Link>
+                      <Link
+                        href={`/clients/${client.id}`}
+                        className="p-1.5 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.1)] text-[#D3C7B6] hover:text-[#FAF7F2] transition-colors"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </Link>
                     </div>
                   </div>
                 </div>
-
-                {client.notes && (
-                  <p className="text-xs text-[#FAF7F2]/80 line-clamp-2 bg-[#141312] p-2.5 rounded-lg border border-[rgba(214,203,189,0.06)] font-mono">
-                    {client.notes}
-                  </p>
-                )}
-
-                {/* Contact & Fitting Counts */}
-                <div className="flex items-center justify-between pt-2 border-t border-[rgba(214,203,189,0.08)] text-xs">
-                  <div className="flex items-center gap-3 text-[#9E948A] text-[11px] font-mono">
-                    <span className="flex items-center gap-1">
-                      <Ruler className="w-3 h-3 text-[#C89B3C]" /> {clientLogs.length} fits
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Scissors className="w-3 h-3 text-[#C89B3C]" /> {clientOrders.length} orders
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-1.5">
-                    <Link
-                      href={`/fittings/new?clientId=${client.id}`}
-                      className="px-2.5 py-1 rounded-lg bg-[#242220] hover:bg-[#C89B3C] text-[#FAF7F2] hover:text-[#141312] text-xs font-mono transition-colors"
-                      title="Measure Client"
-                    >
-                      Measure
-                    </Link>
-                    <Link
-                      href={`/clients/${client.id}`}
-                      className="p-1.5 rounded-lg bg-[#242220] hover:bg-[#2E2B27] text-[#9E948A] hover:text-[#FAF7F2] transition-colors"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </main>
 
       {/* Add Client Bottom Sheet */}
@@ -189,9 +205,9 @@ export default function ClientsPage() {
         title="Add Bespoke Client"
         subtitle="Register New Patron in Atelier Archives"
       >
-        <form onSubmit={handleCreateClient} className="flex flex-col gap-3 text-xs">
+        <form onSubmit={handleCreateClient} className="flex flex-col gap-3.5 text-xs">
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
               Full Name *
             </label>
             <input
@@ -200,13 +216,13 @@ export default function ClientsPage() {
               placeholder="e.g. Lord Charles Harrington"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-2.5">
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
                 Phone Number
               </label>
               <input
@@ -214,11 +230,11 @@ export default function ClientsPage() {
                 placeholder="+44 20 7946 0123"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
               />
             </div>
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
                 Email Address
               </label>
               <input
@@ -226,13 +242,13 @@ export default function ClientsPage() {
                 placeholder="charles@mayfair.co.uk"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
               Anatomical &amp; Tailoring Notes
             </label>
             <textarea
@@ -240,23 +256,23 @@ export default function ClientsPage() {
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               rows={3}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none resize-none"
+              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none resize-none"
             />
           </div>
 
-          <label className="flex items-center gap-2 p-2 rounded-xl bg-[#242220] cursor-pointer">
+          <label className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#242220] border border-[rgba(214,203,189,0.12)] cursor-pointer">
             <input
               type="checkbox"
               checked={isVip}
               onChange={(e) => setIsVip(e.target.checked)}
-              className="rounded text-[#C89B3C] focus:ring-[#C89B3C] bg-[#141312]"
+              className="rounded text-[#C89B3C] focus:ring-[#C89B3C] bg-[#141312] w-4 h-4"
             />
-            <span className="text-xs font-mono text-[#FAF7F2]">Mark as VIP Patron</span>
+            <span className="text-xs font-mono font-medium text-[#FAF7F2]">Mark as VIP Patron</span>
           </label>
 
           <button
             type="submit"
-            className="w-full py-3.5 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-semibold text-sm transition-colors mt-2"
+            className="w-full py-3.5 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] active:scale-[0.98] text-[#141312] font-bold text-sm transition-all shadow-lg shadow-[#C89B3C]/20 mt-2"
           >
             Save Client Profile
           </button>

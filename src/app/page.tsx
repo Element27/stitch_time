@@ -91,54 +91,54 @@ export default function AtelierDashboardPage() {
 
         {/* Quick Stats Grid */}
         <section className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="p-3.5 rounded-xl bg-[#181715] border border-[rgba(214,203,189,0.1)] flex flex-col gap-1">
-            <div className="flex items-center justify-between text-[#9E948A]">
-              <span className="text-[10px] font-mono uppercase">Active Orders</span>
+          <div className="p-4 rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.14)] hover:border-[#C89B3C]/40 transition-all flex flex-col gap-1 shadow-md">
+            <div className="flex items-center justify-between text-[#D3C7B6]">
+              <span className="text-[10px] font-mono uppercase tracking-wider font-semibold">Active Orders</span>
               <Scissors className="w-3.5 h-3.5 text-[#C89B3C]" />
             </div>
-            <span className="text-xl font-mono font-bold text-[#FAF7F2] tnum">
+            <span className="text-2xl font-mono font-bold text-[#FAF7F2] tnum">
               {activeOrders.length}
             </span>
-            <span className="text-[10px] text-[#9E948A]">
+            <span className="text-[11px] font-mono text-[#B8ADA0]">
               {inFittingOrders.length} in fitting stage
             </span>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#181715] border border-[rgba(214,203,189,0.1)] flex flex-col gap-1">
-            <div className="flex items-center justify-between text-[#9E948A]">
-              <span className="text-[10px] font-mono uppercase">Client Roster</span>
+          <div className="p-4 rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.14)] hover:border-[#C89B3C]/40 transition-all flex flex-col gap-1 shadow-md">
+            <div className="flex items-center justify-between text-[#D3C7B6]">
+              <span className="text-[10px] font-mono uppercase tracking-wider font-semibold">Client Roster</span>
               <Users className="w-3.5 h-3.5 text-[#C89B3C]" />
             </div>
-            <span className="text-xl font-mono font-bold text-[#FAF7F2] tnum">
+            <span className="text-2xl font-mono font-bold text-[#FAF7F2] tnum">
               {clients.length}
             </span>
-            <span className="text-[10px] text-[#9E948A]">
+            <span className="text-[11px] font-mono text-[#B8ADA0]">
               {clients.filter((c) => c.vip_status).length} VIP Patrons
             </span>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#181715] border border-[rgba(214,203,189,0.1)] flex flex-col gap-1">
-            <div className="flex items-center justify-between text-[#9E948A]">
-              <span className="text-[10px] font-mono uppercase">Fitting Sessions</span>
+          <div className="p-4 rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.14)] hover:border-[#C89B3C]/40 transition-all flex flex-col gap-1 shadow-md">
+            <div className="flex items-center justify-between text-[#D3C7B6]">
+              <span className="text-[10px] font-mono uppercase tracking-wider font-semibold">Fitting Sessions</span>
               <Ruler className="w-3.5 h-3.5 text-[#C89B3C]" />
             </div>
-            <span className="text-xl font-mono font-bold text-[#FAF7F2] tnum">
+            <span className="text-2xl font-mono font-bold text-[#FAF7F2] tnum">
               {measurementLogs.length}
             </span>
-            <span className="text-[10px] text-[#9E948A]">
+            <span className="text-[11px] font-mono text-[#B8ADA0]">
               Logged offline &amp; sync
             </span>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#181715] border border-[rgba(214,203,189,0.1)] flex flex-col gap-1">
-            <div className="flex items-center justify-between text-[#9E948A]">
-              <span className="text-[10px] font-mono uppercase">Balance Due</span>
+          <div className="p-4 rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.14)] hover:border-[#C89B3C]/40 transition-all flex flex-col gap-1 shadow-md">
+            <div className="flex items-center justify-between text-[#D3C7B6]">
+              <span className="text-[10px] font-mono uppercase tracking-wider font-semibold">Balance Due</span>
               <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
             </div>
-            <span className="text-xl font-mono font-bold text-[#FAF7F2] tnum">
+            <span className="text-2xl font-mono font-bold text-[#FAF7F2] tnum">
               {formatCurrency(outstandingBalance)}
             </span>
-            <span className="text-[10px] text-emerald-400 font-mono">
+            <span className="text-[11px] text-emerald-400 font-mono font-medium">
               {formatCurrency(totalDeposits)} collected
             </span>
           </div>
@@ -163,8 +163,17 @@ export default function AtelierDashboardPage() {
           </div>
 
           {orders.length === 0 ? (
-            <div className="p-6 rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.1)] text-center text-xs text-[#9E948A]">
-              No active orders on the workbench. Start a new order or fitting!
+            <div className="p-8 rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.12)] text-center text-xs text-[#D3C7B6] flex flex-col items-center gap-2">
+              <Scissors className="w-7 h-7 text-[#C89B3C]" />
+              <p className="font-serif text-sm text-[#FAF7F2]">No Active Orders on Workbench</p>
+              <p className="text-xs text-[#B8ADA0]">Start a new bespoke garment commission or record a fitting session.</p>
+              <Link
+                href="/orders"
+                className="mt-1 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-bold text-xs transition-all shadow-md"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>New Commission</span>
+              </Link>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
@@ -201,65 +210,80 @@ export default function AtelierDashboardPage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {clients.slice(0, 4).map((client) => {
-              const clientLogs = measurementLogs.filter((l) => l.client_id === client.id);
-              const latestLog = clientLogs[0];
+          {clients.length === 0 ? (
+            <div className="p-8 rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.12)] text-center text-xs text-[#D3C7B6] flex flex-col items-center gap-2">
+              <Users className="w-7 h-7 text-[#C89B3C]" />
+              <p className="font-serif text-sm text-[#FAF7F2]">No Clients in Roster</p>
+              <p className="text-xs text-[#B8ADA0]">Register a bespoke client to begin recording fittings.</p>
+              <Link
+                href="/clients"
+                className="mt-1 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-bold text-xs transition-all shadow-md"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>Register Patron</span>
+              </Link>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {clients.slice(0, 4).map((client) => {
+                const clientLogs = measurementLogs.filter((l) => l.client_id === client.id);
+                const latestLog = clientLogs[0];
 
-              return (
-                <div
-                  key={client.id}
-                  className="p-4 rounded-xl bg-[#181715] hover:bg-[#1E1D1B] border border-[rgba(214,203,189,0.1)] hover:border-[#C89B3C]/30 transition-all flex items-center justify-between gap-3 group"
-                >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="relative w-10 h-10 rounded-full bg-[#242220] border border-[rgba(214,203,189,0.2)] flex items-center justify-center font-mono font-bold text-xs text-[#E0BA62] overflow-hidden flex-shrink-0">
-                      {client.avatar_url ? (
-                        <img
-                          src={client.avatar_url}
-                          alt={client.full_name}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        getInitials(client.full_name)
-                      )}
-                    </div>
-
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-1.5">
-                        <Link href={`/clients/${client.id}`} className="hover:underline truncate">
-                          <h4 className="text-sm font-serif font-bold text-[#FAF7F2] truncate group-hover:text-[#E0BA62] transition-colors">
-                            {client.full_name}
-                          </h4>
-                        </Link>
-                        {client.vip_status && (
-                          <Star className="w-3 h-3 text-[#C89B3C] fill-[#C89B3C] flex-shrink-0" />
+                return (
+                  <div
+                    key={client.id}
+                    className="p-4 rounded-2xl bg-[#181715] hover:bg-[#1E1D1B] border border-[rgba(214,203,189,0.14)] hover:border-[#C89B3C]/40 transition-all flex items-center justify-between gap-3 group shadow-md"
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="relative w-10 h-10 rounded-full bg-[#242220] border-2 border-[rgba(214,203,189,0.25)] flex items-center justify-center font-mono font-bold text-xs text-[#E0BA62] overflow-hidden flex-shrink-0">
+                        {client.avatar_url ? (
+                          <img
+                            src={client.avatar_url}
+                            alt={client.full_name}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          getInitials(client.full_name)
                         )}
                       </div>
-                      <p className="text-[11px] font-mono text-[#9E948A] truncate">
-                        {latestLog ? `Last fit: ${formatDate(latestLog.recorded_at)}` : client.phone || 'No fits logged'}
-                      </p>
+
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1.5">
+                          <Link href={`/clients/${client.id}`} className="hover:underline truncate">
+                            <h4 className="text-sm font-serif font-bold text-[#FAF7F2] truncate group-hover:text-[#E0BA62] transition-colors">
+                              {client.full_name}
+                            </h4>
+                          </Link>
+                          {client.vip_status && (
+                            <Star className="w-3 h-3 text-[#C89B3C] fill-[#C89B3C] flex-shrink-0" />
+                          )}
+                        </div>
+                        <p className="text-[11px] font-mono text-[#D3C7B6] truncate">
+                          {latestLog ? `Last fit: ${formatDate(latestLog.recorded_at)}` : client.phone || 'No fits logged'}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 flex-shrink-0">
+                      <Link
+                        href={`/fittings/new?clientId=${client.id}`}
+                        className="p-2 rounded-lg bg-[#242220] hover:bg-[#C89B3C] text-[#FAF7F2] hover:text-[#141312] transition-colors"
+                        title="Measure Client"
+                      >
+                        <Ruler className="w-3.5 h-3.5" />
+                      </Link>
+                      <Link
+                        href={`/clients/${client.id}`}
+                        className="p-2 rounded-lg bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.1)] text-[#D3C7B6] hover:text-[#FAF7F2] transition-colors"
+                      >
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </Link>
                     </div>
                   </div>
-
-                  <div className="flex items-center gap-1.5 flex-shrink-0">
-                    <Link
-                      href={`/fittings/new?clientId=${client.id}`}
-                      className="p-2 rounded-lg bg-[#242220] hover:bg-[#C89B3C] text-[#FAF7F2] hover:text-[#141312] transition-colors"
-                      title="Measure Client"
-                    >
-                      <Ruler className="w-3.5 h-3.5" />
-                    </Link>
-                    <Link
-                      href={`/clients/${client.id}`}
-                      className="p-2 rounded-lg bg-[#242220] hover:bg-[#2E2B27] text-[#9E948A] hover:text-[#FAF7F2] transition-colors"
-                    >
-                      <ChevronRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </section>
       </main>
 

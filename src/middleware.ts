@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import type { NextRequest, NextFetchEvent } from 'next/server';
 
 const hasClerkKeys = Boolean(
   process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && process.env.CLERK_SECRET_KEY
 );
 
 // If Clerk keys are configured, use Clerk middleware dynamically
-export default async function middleware(req: NextRequest) {
+export default async function middleware(req: NextRequest, event: NextFetchEvent) {
   if (!hasClerkKeys) {
     // In local-first / offline demo mode, pass all requests through to Dexie & local state
     return NextResponse.next();
@@ -14,7 +14,6 @@ export default async function middleware(req: NextRequest) {
 
   const { clerkMiddleware, createRouteMatcher } = await import('@clerk/nextjs/server');
   const isPublicRoute = createRouteMatcher([
-    '/',
     '/sign-in(.*)',
     '/sign-up(.*)',
     '/manifest.webmanifest',
@@ -30,7 +29,7 @@ export default async function middleware(req: NextRequest) {
     if (!isPublicRoute(request)) {
       await auth.protect();
     }
-  })(req, {} as any);
+  })(req, event);
 }
 
 export const config = {

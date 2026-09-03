@@ -59,14 +59,14 @@ export function MobileBottomBar() {
                 "flex flex-col items-center py-1.5 px-3 rounded-xl transition-all duration-200",
                 isActive
                   ? "text-[#C89B3C]"
-                  : "text-[#9E948A] hover:text-[#FAF7F2]"
+                  : "text-[#D3C7B6] hover:text-[#FAF7F2]"
               )}
             >
               <Icon className={cn("w-5 h-5 transition-transform", isActive && "scale-110")} />
               <span
                 className={cn(
-                  "text-[10px] font-mono mt-1",
-                  isActive ? "font-bold text-[#FAF7F2]" : "text-[#9E948A]"
+                  "text-[10px] font-mono mt-1 font-medium",
+                  isActive ? "font-bold text-[#FAF7F2]" : "text-[#D3C7B6]"
                 )}
               >
                 {item.label}

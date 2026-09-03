@@ -146,13 +146,13 @@ export default function OrdersPage() {
         {/* Search & Status Pill Filter Tabs */}
         <div className="flex flex-col gap-2.5">
           <div className="relative">
-            <Search className="w-4 h-4 text-[#9E948A] absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#D3C7B6] absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search garments by commission title, patron, or type..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#181715] border border-[rgba(214,203,189,0.12)] rounded-xl pl-10 pr-4 py-2.5 text-xs text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+              className="w-full bg-[#181715] border border-[rgba(214,203,189,0.18)] rounded-xl pl-10 pr-4 py-2.5 text-xs text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
             />
           </div>
 
@@ -171,18 +171,18 @@ export default function OrdersPage() {
                   key={tab.key}
                   type="button"
                   onClick={() => setActiveTab(tab.key)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all flex items-center gap-1.5 border ${
                     isSelected
-                      ? 'bg-[#C89B3C] text-[#141312] font-bold shadow-sm'
-                      : 'bg-[#181715] text-[#9E948A] hover:text-[#FAF7F2] border border-[rgba(214,203,189,0.08)]'
+                      ? 'bg-[#C89B3C] text-[#141312] font-bold border-[#FAF7F2] shadow-md'
+                      : 'bg-[#181715] text-[#D3C7B6] hover:text-[#FAF7F2] border-[rgba(214,203,189,0.12)] hover:border-[#C89B3C]/40'
                   }`}
                 >
                   <span>{tab.label}</span>
                   <span
-                    className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                    className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
                       isSelected
-                        ? 'bg-[#141312]/20 text-[#141312]'
-                        : 'bg-[#242220] text-[#9E948A]'
+                        ? 'bg-[#141312] text-[#FAF7F2]'
+                        : 'bg-[#242220] text-[#E0BA62] border border-[rgba(214,203,189,0.1)]'
                     }`}
                   >
                     {count}
@@ -196,9 +196,10 @@ export default function OrdersPage() {
         {/* Orders Pipeline List */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
           {filteredOrders.length === 0 ? (
-            <div className="md:col-span-2 p-10 text-center rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.1)] text-xs text-[#9E948A]">
-              <Scissors className="w-8 h-8 text-[#C89B3C]/50 mx-auto mb-2" />
-              <p>No orders found matching the selected filter criteria.</p>
+            <div className="md:col-span-2 p-10 text-center rounded-2xl bg-[#181715] border border-[rgba(214,203,189,0.12)] text-xs text-[#D3C7B6]">
+              <Scissors className="w-8 h-8 text-[#C89B3C] mx-auto mb-2" />
+              <p className="font-serif text-sm text-[#FAF7F2] mb-1">No Orders Found</p>
+              <p className="text-xs text-[#B8ADA0]">No garments found matching the selected filter criteria.</p>
             </div>
           ) : (
             filteredOrders.map((order) => {
@@ -226,7 +227,7 @@ export default function OrdersPage() {
         <form onSubmit={handleCreateOrder} className="flex flex-col gap-3.5 text-xs">
           {/* Client Selector */}
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
               Patron Client *
             </label>
             <select
@@ -237,7 +238,7 @@ export default function OrdersPage() {
                 const clientLogs = logs.filter((l) => l.client_id === e.target.value);
                 if (clientLogs.length > 0) setSelectedLogId(clientLogs[0].id);
               }}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] font-serif focus:border-[#C89B3C] focus:outline-none"
+              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] font-serif text-sm focus:border-[#C89B3C] focus:outline-none"
             >
               <option value="" disabled>Select Patron...</option>
               {clients.map((c) => (
@@ -249,9 +250,9 @@ export default function OrdersPage() {
           </div>
 
           {/* Garment Title & Type */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
                 Order Title *
               </label>
               <input
@@ -260,12 +261,12 @@ export default function OrdersPage() {
                 placeholder="e.g. Midnight Barathea Tuxedo"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
                 Garment Category
               </label>
               <input
@@ -273,21 +274,21 @@ export default function OrdersPage() {
                 placeholder="e.g. Bespoke 3-Piece Suit"
                 value={garmentType}
                 onChange={(e) => setGarmentType(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
               />
             </div>
           </div>
 
           {/* Target Stage & Priority */}
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-2.5">
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
                 Starting Stage
               </label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value as any)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
               >
                 <option value="pending">Pending</option>
                 <option value="cutting">Cutting</option>
@@ -298,13 +299,13 @@ export default function OrdersPage() {
             </div>
 
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
                 Priority Tier
               </label>
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value as any)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
               >
                 <option value="standard">Standard Atelier</option>
                 <option value="rush">Rush Express</option>
@@ -314,9 +315,9 @@ export default function OrdersPage() {
           </div>
 
           {/* Pricing & Deposit */}
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-2.5">
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
                 Total Price ($)
               </label>
               <input
@@ -325,12 +326,12 @@ export default function OrdersPage() {
                 required
                 value={totalPrice}
                 onChange={(e) => setTotalPrice(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
                 Deposit Received ($)
               </label>
               <input
@@ -338,26 +339,26 @@ export default function OrdersPage() {
                 step="0.01"
                 value={depositPaid}
                 onChange={(e) => setDepositPaid(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
               />
             </div>
           </div>
 
           {/* Due Date */}
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
               Target Completion / Fitting Due Date
             </label>
             <input
               type="date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
+              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] font-mono focus:border-[#C89B3C] focus:outline-none"
             />
           </div>
 
           {/* Swatch Picker */}
-          <div className="pt-2 border-t border-[rgba(214,203,189,0.1)]">
+          <div className="pt-2 border-t border-[rgba(214,203,189,0.12)]">
             <SwatchGallery
               selectedSwatches={selectedSwatches}
               onToggleSwatch={handleToggleSwatch}
@@ -366,7 +367,7 @@ export default function OrdersPage() {
 
           {/* Commission Notes */}
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
               Workbench / Tailor Instructions
             </label>
             <textarea
@@ -374,13 +375,13 @@ export default function OrdersPage() {
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               rows={2}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none resize-none"
+              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none resize-none"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-3.5 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-semibold text-sm transition-colors mt-2"
+            className="w-full py-3.5 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] active:scale-[0.98] text-[#141312] font-bold text-sm transition-all shadow-lg shadow-[#C89B3C]/20 mt-2"
           >
             Create Order &amp; Launch Workbench
           </button>

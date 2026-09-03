@@ -31,7 +31,7 @@ export function AtelierHeader({ title, subtitle }: { title?: string; subtitle?: 
                 {title}
               </h1>
             ) : (
-              <p className="text-[11px] font-mono text-[#9E948A]">Bespoke Companion</p>
+              <p className="text-[11px] font-mono text-[#D3C7B6]">Bespoke Companion</p>
             )}
           </div>
         </Link>

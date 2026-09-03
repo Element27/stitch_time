@@ -16,7 +16,7 @@ export function SwatchGallery({
   onToggleSwatch,
   allowCustomUpload = true
 }: SwatchGalleryProps) {
-  const [swatches, setSwatches] = useState<FabricSwatch[]>(SAMPLE_SWATCHES);
+  const [swatches, setSwatches] = useState<FabricSwatch[]>([]);
   const [newSwatchName, setNewSwatchName] = useState('');
   const [newSwatchMill, setNewSwatchMill] = useState('');
   const [newSwatchComposition, setNewSwatchComposition] = useState('');
@@ -32,7 +32,7 @@ export function SwatchGallery({
       name: newSwatchName,
       mill_name: newSwatchMill || 'Private Atelier Mill',
       composition: newSwatchComposition || '100% Bespoke Textile',
-      image_url: newSwatchUrl || 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80',
+      image_url: newSwatchUrl || '',
       pattern: 'Solid'
     };
 
@@ -53,7 +53,7 @@ export function SwatchGallery({
         <div className="flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-[#C89B3C]" />
           <h4 className="text-sm font-serif font-bold text-[#FAF7F2]">
-            Atelier Fabric Swatches & Mill Archives
+            Atelier Fabric Swatches &amp; Mill Archives
           </h4>
         </div>
         {allowCustomUpload && (
@@ -131,68 +131,74 @@ export function SwatchGallery({
         </form>
       )}
 
-      {/* Swatch Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        {swatches.map((swatch) => {
-          const isSelected = swatch.image_url ? selectedSwatches.includes(swatch.image_url) : false;
+      {/* Swatch Grid or Empty State */}
+      {swatches.length === 0 ? (
+        <div className="p-4 rounded-xl bg-[#181715] border border-[rgba(214,203,189,0.08)] text-center text-xs text-[#9E948A]">
+          No fabric swatches in archive. Click &quot;Add Swatch&quot; to register bespoke textiles.
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {swatches.map((swatch) => {
+            const isSelected = swatch.image_url ? selectedSwatches.includes(swatch.image_url) : false;
 
-          return (
-            <div
-              key={swatch.id}
-              onClick={() => onToggleSwatch && swatch.image_url && onToggleSwatch(swatch.image_url)}
-              className={`relative rounded-xl overflow-hidden border transition-all cursor-pointer group flex flex-col bg-[#1E1D1B] ${
-                isSelected
-                  ? 'border-[#C89B3C] ring-2 ring-[#C89B3C]/40 shadow-lg'
-                  : 'border-[rgba(214,203,189,0.12)] hover:border-[rgba(214,203,189,0.3)]'
-              }`}
-            >
-              {/* Swatch Image Preview */}
-              <div className="relative h-28 w-full bg-[#242220] overflow-hidden">
-                {swatch.image_url ? (
-                  <img
-                    src={swatch.image_url}
-                    alt={swatch.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-[#9E948A]">
-                    <ImageIcon className="w-6 h-6" />
-                  </div>
-                )}
+            return (
+              <div
+                key={swatch.id}
+                onClick={() => onToggleSwatch && swatch.image_url && onToggleSwatch(swatch.image_url)}
+                className={`relative rounded-xl overflow-hidden border transition-all cursor-pointer group flex flex-col bg-[#1E1D1B] ${
+                  isSelected
+                    ? 'border-[#C89B3C] ring-2 ring-[#C89B3C]/40 shadow-lg'
+                    : 'border-[rgba(214,203,189,0.12)] hover:border-[rgba(214,203,189,0.3)]'
+                }`}
+              >
+                {/* Swatch Image Preview */}
+                <div className="relative h-28 w-full bg-[#242220] overflow-hidden">
+                  {swatch.image_url ? (
+                    <img
+                      src={swatch.image_url}
+                      alt={swatch.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-[#9E948A]">
+                      <ImageIcon className="w-6 h-6" />
+                    </div>
+                  )}
 
-                {/* Selection Checkmark */}
-                {isSelected && (
-                  <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-[#C89B3C] text-[#141312] flex items-center justify-center shadow-md">
-                    <Check className="w-3.5 h-3.5 stroke-[3]" />
-                  </div>
-                )}
+                  {/* Selection Checkmark */}
+                  {isSelected && (
+                    <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-[#C89B3C] text-[#141312] flex items-center justify-center shadow-md">
+                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                    </div>
+                  )}
 
-                {/* Weight Tag */}
-                {swatch.weight_gsm && (
-                  <div className="absolute bottom-2 left-2 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[9px] font-mono text-[#FAF7F2]">
-                    {swatch.weight_gsm}
-                  </div>
-                )}
+                  {/* Weight Tag */}
+                  {swatch.weight_gsm && (
+                    <div className="absolute bottom-2 left-2 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[9px] font-mono text-[#FAF7F2]">
+                      {swatch.weight_gsm}
+                    </div>
+                  )}
+                </div>
+
+                {/* Swatch Details */}
+                <div className="p-2.5 flex flex-col gap-0.5">
+                  <span className="text-[10px] font-mono uppercase text-[#C89B3C] truncate">
+                    {swatch.mill_name || 'Atelier Weave'}
+                  </span>
+                  <h5 className="text-xs font-serif font-bold text-[#FAF7F2] truncate">
+                    {swatch.name}
+                  </h5>
+                  {swatch.composition && (
+                    <p className="text-[10px] text-[#D3C7B6] line-clamp-1">
+                      {swatch.composition}
+                    </p>
+                  )}
+                </div>
               </div>
-
-              {/* Swatch Details */}
-              <div className="p-2.5 flex flex-col gap-0.5">
-                <span className="text-[10px] font-mono uppercase text-[#C89B3C] truncate">
-                  {swatch.mill_name || 'Atelier Weave'}
-                </span>
-                <h5 className="text-xs font-serif font-bold text-[#FAF7F2] truncate">
-                  {swatch.name}
-                </h5>
-                {swatch.composition && (
-                  <p className="text-[10px] text-[#9E948A] line-clamp-1">
-                    {swatch.composition}
-                  </p>
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

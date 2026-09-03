@@ -217,20 +217,20 @@ function FittingWorkspaceInner() {
 
       <main className="max-w-4xl mx-auto px-4 py-4 flex flex-col gap-4">
         {/* Client & Template Top Controls */}
-        <section className="bg-[#181715] border border-[rgba(214,203,189,0.12)] rounded-2xl p-4 flex flex-col gap-3 shadow-lg">
+        <section className="bg-[#181715] border border-[rgba(214,203,189,0.16)] rounded-2xl p-4 flex flex-col gap-3.5 shadow-lg">
           {/* Client Selector & Quick Add */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex-1">
-              <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
-                Client Patron
+              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
+                Client Patron *
               </label>
               <div className="flex items-center gap-2">
                 <select
                   value={selectedClientId}
                   onChange={(e) => handleClientChange(e.target.value)}
-                  className="flex-1 bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl px-3 py-2 text-sm font-serif font-semibold text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+                  className="flex-1 bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl px-3 py-2.5 text-sm font-serif font-semibold text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
                 >
-                  <option value="" disabled>Select Client...</option>
+                  <option value="" disabled>{clients.length === 0 ? 'No clients yet — click + to add' : 'Select Client...'}</option>
                   {clients.map((c) => (
                     <option key={c.id} value={c.id}>
                       {c.full_name} {c.vip_status ? '★ (VIP)' : ''}
@@ -240,7 +240,7 @@ function FittingWorkspaceInner() {
                 <button
                   type="button"
                   onClick={() => setShowNewClientSheet(true)}
-                  className="p-2.5 rounded-xl bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.15)] text-[#E0BA62] transition-colors"
+                  className="p-2.5 rounded-xl bg-[#242220] hover:bg-[#2E2B27] border border-[rgba(214,203,189,0.2)] text-[#E0BA62] transition-colors"
                   title="Add New Client"
                 >
                   <Plus className="w-4 h-4" />
@@ -250,13 +250,13 @@ function FittingWorkspaceInner() {
 
             {/* Template Picker */}
             <div className="flex-1">
-              <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
                 Garment Silhouette Template
               </label>
               <select
                 value={selectedTemplateId}
                 onChange={(e) => setSelectedTemplateId(e.target.value)}
-                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl px-3 py-2 text-sm font-mono text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+                className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl px-3 py-2.5 text-sm font-mono text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
               >
                 {templates.map((tmpl) => (
                   <option key={tmpl.id} value={tmpl.id}>
@@ -268,26 +268,26 @@ function FittingWorkspaceInner() {
           </div>
 
           {/* Unit Toggle & Progress Bar */}
-          <div className="flex items-center justify-between pt-2 border-t border-[rgba(214,203,189,0.08)]">
+          <div className="flex items-center justify-between pt-2.5 border-t border-[rgba(214,203,189,0.1)]">
             <div className="flex items-center gap-2 text-xs font-mono">
-              <span className="text-[#9E948A]">Progress:</span>
+              <span className="text-[#D3C7B6]">Progress:</span>
               <span className="font-bold text-[#E0BA62] tnum">
                 {filledCount} / {fields.length} points
               </span>
-              <span className="text-[10px] text-[#9E948A] hidden sm:inline">
+              <span className="text-[10px] text-[#B8ADA0] hidden sm:inline">
                 ({Math.round((filledCount / (fields.length || 1)) * 100)}%)
               </span>
             </div>
 
             {/* Unit Switcher */}
-            <div className="flex items-center gap-1 bg-[#141312] p-1 rounded-xl border border-[rgba(214,203,189,0.1)]">
+            <div className="flex items-center gap-1 bg-[#141312] p-1 rounded-xl border border-[rgba(214,203,189,0.14)]">
               <button
                 type="button"
                 onClick={() => handleUnitToggle('inches')}
                 className={`px-3 py-1 rounded-lg text-xs font-mono font-semibold transition-all ${
                   unit === 'inches'
                     ? 'bg-[#C89B3C] text-[#141312] shadow-sm'
-                    : 'text-[#9E948A] hover:text-[#FAF7F2]'
+                    : 'text-[#D3C7B6] hover:text-[#FAF7F2]'
                 }`}
               >
                 Inches (&quot;)
@@ -298,7 +298,7 @@ function FittingWorkspaceInner() {
                 className={`px-3 py-1 rounded-lg text-xs font-mono font-semibold transition-all ${
                   unit === 'cm'
                     ? 'bg-[#C89B3C] text-[#141312] shadow-sm'
-                    : 'text-[#9E948A] hover:text-[#FAF7F2]'
+                    : 'text-[#D3C7B6] hover:text-[#FAF7F2]'
                 }`}
               >
                 Centimeters (cm)
@@ -322,26 +322,26 @@ function FittingWorkspaceInner() {
             <button
               type="button"
               onClick={() => setShowPreferencesSheet(true)}
-              className="w-full max-w-[340px] mt-3 py-2.5 px-4 rounded-xl bg-[#181715] hover:bg-[#242220] border border-[rgba(214,203,189,0.12)] text-xs font-mono flex items-center justify-between text-[#FAF7F2] transition-colors"
+              className="w-full max-w-[340px] mt-3 py-2.5 px-4 rounded-xl bg-[#181715] hover:bg-[#242220] border border-[rgba(214,203,189,0.15)] text-xs font-mono flex items-center justify-between text-[#FAF7F2] transition-colors shadow-sm"
             >
               <div className="flex items-center gap-2">
                 <Sliders className="w-3.5 h-3.5 text-[#C89B3C]" />
-                <span>Fit Preferences &amp; Posture</span>
+                <span className="font-medium text-[#FAF7F2]">Fit Preferences &amp; Posture</span>
               </div>
-              <span className="capitalize text-[#E0BA62]">{fitStyle}</span>
+              <span className="capitalize font-bold text-[#E0BA62]">{fitStyle}</span>
             </button>
           </div>
 
           {/* Rapid Measurement Point Cards (Right / Bottom) */}
           <div className="md:col-span-7 flex flex-col gap-2">
             <div className="flex items-center justify-between pb-1">
-              <span className="text-xs font-mono uppercase text-[#9E948A]">
+              <span className="text-xs font-mono uppercase tracking-wider text-[#D3C7B6] font-semibold">
                 Measurement Points ({fields.length})
               </span>
               <button
                 type="button"
                 onClick={() => setShowKeypadSheet(true)}
-                className="text-xs font-mono text-[#E0BA62] hover:underline"
+                className="text-xs font-mono font-semibold text-[#E0BA62] hover:underline"
               >
                 Open Full Keypad
               </button>
@@ -362,14 +362,14 @@ function FittingWorkspaceInner() {
                     }}
                     className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-2 ${
                       isCurrent
-                        ? 'bg-[#1E1D1B] border-[#C89B3C] ring-1 ring-[#C89B3C]/50 shadow-md'
+                        ? 'bg-[#1E1D1B] border-[#C89B3C] ring-2 ring-[#C89B3C]/50 shadow-lg'
                         : hasValue
-                        ? 'bg-[#181715] border-[rgba(214,203,189,0.14)] hover:border-[#C89B3C]/40'
-                        : 'bg-[#181715]/60 border-[rgba(214,203,189,0.08)] hover:border-[rgba(214,203,189,0.2)]'
+                        ? 'bg-[#181715] border-[rgba(214,203,189,0.16)] hover:border-[#C89B3C]/40'
+                        : 'bg-[#181715]/80 border-[rgba(214,203,189,0.1)] hover:border-[rgba(214,203,189,0.25)]'
                     }`}
                   >
                     <div className="flex items-center gap-2 min-w-0">
-                      <span className="w-5 h-5 rounded-md bg-[#242220] text-[#9E948A] text-[10px] font-mono flex items-center justify-center flex-shrink-0">
+                      <span className="w-5 h-5 rounded-md bg-[#242220] border border-[rgba(214,203,189,0.1)] text-[#D3C7B6] text-[10px] font-mono font-bold flex items-center justify-center flex-shrink-0">
                         {idx + 1}
                       </span>
                       <span className="text-xs font-serif font-medium text-[#FAF7F2] truncate">
@@ -380,7 +380,7 @@ function FittingWorkspaceInner() {
                     <div className="text-right flex-shrink-0">
                       <span
                         className={`text-sm font-mono font-bold tnum ${
-                          hasValue ? 'text-[#E0BA62]' : 'text-[#9E948A]/40'
+                          hasValue ? 'text-[#E0BA62]' : 'text-[#8E847A]'
                         }`}
                       >
                         {hasValue ? formatMeasurement(val, unit) : '—'}
@@ -392,8 +392,8 @@ function FittingWorkspaceInner() {
             </div>
 
             {/* Session Notes Input */}
-            <div className="mt-2 bg-[#181715] p-3 rounded-xl border border-[rgba(214,203,189,0.1)]">
-              <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+            <div className="mt-2 bg-[#181715] p-3 rounded-xl border border-[rgba(214,203,189,0.14)]">
+              <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
                 Atelier Fitting Session Notes
               </label>
               <textarea
@@ -401,7 +401,7 @@ function FittingWorkspaceInner() {
                 onChange={(e) => setSessionNotes(e.target.value)}
                 placeholder="e.g. Right shoulder sitting 0.25 low, tightened waist suppression, baste fitting..."
                 rows={2}
-                className="w-full bg-[#141312] border border-[rgba(214,203,189,0.1)] rounded-lg p-2 text-xs text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none resize-none"
+                className="w-full bg-[#141312] border border-[rgba(214,203,189,0.14)] rounded-lg p-2 text-xs text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none resize-none"
               />
             </div>
           </div>
@@ -413,7 +413,7 @@ function FittingWorkspaceInner() {
             type="button"
             onClick={handleSaveFittingSession}
             disabled={isSaving || saveSuccess}
-            className={`w-full py-3.5 px-6 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-xl transition-all ${
+            className={`w-full py-3.5 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-xl transition-all ${
               saveSuccess
                 ? 'bg-emerald-500 text-black'
                 : 'bg-[#C89B3C] hover:bg-[#D4A373] active:scale-[0.98] text-[#141312] shadow-[#C89B3C]/25'
@@ -466,7 +466,7 @@ function FittingWorkspaceInner() {
         <div className="flex flex-col gap-4 text-xs">
           {/* Fit Silhouette Profile */}
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1.5">
+            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1.5">
               Ease Silhouette
             </label>
             <div className="grid grid-cols-2 gap-2">
@@ -482,12 +482,12 @@ function FittingWorkspaceInner() {
                   onClick={() => setFitStyle(style.id as any)}
                   className={`p-3 rounded-xl border text-left transition-all ${
                     fitStyle === style.id
-                      ? 'bg-[#1E1D1B] border-[#C89B3C] ring-1 ring-[#C89B3C]'
-                      : 'bg-[#242220] border-[rgba(214,203,189,0.1)] text-[#9E948A]'
+                      ? 'bg-[#1E1D1B] border-[#C89B3C] ring-2 ring-[#C89B3C]/50 shadow-md'
+                      : 'bg-[#242220] border-[rgba(214,203,189,0.12)] hover:border-[#C89B3C]/30 text-[#D3C7B6]'
                   }`}
                 >
                   <span className="font-serif font-bold text-[#FAF7F2] block">{style.label}</span>
-                  <span className="text-[10px] text-[#9E948A] mt-0.5 block">{style.desc}</span>
+                  <span className="text-[10px] text-[#B8ADA0] mt-0.5 block">{style.desc}</span>
                 </button>
               ))}
             </div>
@@ -495,7 +495,7 @@ function FittingWorkspaceInner() {
 
           {/* Shoulder Slope */}
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1.5">
+            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1.5">
               Shoulder Incline
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -510,8 +510,8 @@ function FittingWorkspaceInner() {
                   onClick={() => setShoulderSlope(slope.id as any)}
                   className={`p-2.5 rounded-xl border text-center font-mono text-xs transition-all ${
                     shoulderSlope === slope.id
-                      ? 'bg-[#C89B3C] text-[#141312] font-bold border-[#FAF7F2]'
-                      : 'bg-[#242220] border-[rgba(214,203,189,0.1)] text-[#FAF7F2]'
+                      ? 'bg-[#C89B3C] text-[#141312] font-bold border-[#FAF7F2] shadow-md'
+                      : 'bg-[#242220] border-[rgba(214,203,189,0.12)] text-[#FAF7F2]'
                   }`}
                 >
                   {slope.label}
@@ -522,7 +522,7 @@ function FittingWorkspaceInner() {
 
           {/* Posture Notes */}
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1.5">
+            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1.5">
               Posture &amp; Anatomical Asymmetry Notes
             </label>
             <textarea
@@ -530,14 +530,14 @@ function FittingWorkspaceInner() {
               onChange={(e) => setPostureNotes(e.target.value)}
               placeholder="e.g. Erect head carriage, left hip sits 0.5 inches higher, prominent chest drop..."
               rows={3}
-              className="w-full bg-[#141312] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none resize-none"
+              className="w-full bg-[#141312] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none resize-none"
             />
           </div>
 
           <button
             type="button"
             onClick={() => setShowPreferencesSheet(false)}
-            className="w-full py-3 rounded-xl bg-[#C89B3C] text-[#141312] font-semibold transition-colors mt-2"
+            className="w-full py-3 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-bold transition-colors mt-2"
           >
             Apply Preferences
           </button>
@@ -551,9 +551,9 @@ function FittingWorkspaceInner() {
         title="Register New Patron"
         subtitle="Quick Client Profile"
       >
-        <form onSubmit={handleCreateNewClient} className="flex flex-col gap-3 text-xs">
+        <form onSubmit={handleCreateNewClient} className="flex flex-col gap-3.5 text-xs">
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
               Full Name *
             </label>
             <input
@@ -562,12 +562,12 @@ function FittingWorkspaceInner() {
               placeholder="e.g. Arthur Pendelton"
               value={newClientName}
               onChange={(e) => setNewClientName(e.target.value)}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
               Phone Number
             </label>
             <input
@@ -575,12 +575,12 @@ function FittingWorkspaceInner() {
               placeholder="+44 7700 900123"
               value={newClientPhone}
               onChange={(e) => setNewClientPhone(e.target.value)}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="text-[10px] font-mono uppercase text-[#9E948A] block mb-1">
+            <label className="text-[10px] font-mono uppercase text-[#D3C7B6] font-semibold block mb-1">
               Email Address
             </label>
             <input
@@ -588,13 +588,13 @@ function FittingWorkspaceInner() {
               placeholder="client@bespoke.com"
               value={newClientEmail}
               onChange={(e) => setNewClientEmail(e.target.value)}
-              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.14)] rounded-xl p-3 text-[#FAF7F2] focus:border-[#C89B3C] focus:outline-none"
+              className="w-full bg-[#242220] border border-[rgba(214,203,189,0.18)] rounded-xl p-3 text-[#FAF7F2] placeholder-[#8E847A] focus:border-[#C89B3C] focus:outline-none"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-3 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] text-[#141312] font-semibold text-sm transition-colors mt-2"
+            className="w-full py-3.5 rounded-xl bg-[#C89B3C] hover:bg-[#D4A373] active:scale-[0.98] text-[#141312] font-bold text-sm transition-all shadow-lg shadow-[#C89B3C]/20 mt-2"
           >
             Create Client &amp; Proceed to Measure
           </button>
