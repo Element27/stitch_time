@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Stitch & Time — Bespoke Atelier',
-    short_name: 'Stitch & Time',
+    name: 'StitchTime — Bespoke Atelier',
+    short_name: 'StitchTime',
     description: 'Editorial fitting & bespoke tailoring companion for on-the-go garment designers.',
     start_url: '/',
     display: 'standalone',

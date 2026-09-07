@@ -4,13 +4,13 @@ import { ClientProviders } from "@/components/providers/ClientProviders";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Stitch & Time — Editorial Atelier & Bespoke Workshop",
+  title: "StitchTime — Editorial Atelier & Bespoke Workshop",
   description: "Mobile-first PWA for fashion designers and bespoke tailors to measure clients on the go, track orders, and sync offline.",
-  applicationName: "Stitch & Time",
+  applicationName: "StitchTime",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Stitch & Time",
+    title: "StitchTime",
   },
   formatDetection: {
     telephone: false,

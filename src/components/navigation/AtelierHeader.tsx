@@ -20,7 +20,7 @@ export function AtelierHeader({ title, subtitle }: { title?: string; subtitle?: 
           <div>
             <div className="flex items-center gap-1.5">
               <span className="font-serif font-bold tracking-widest text-xs uppercase text-[#F4EFEA]">
-                Stitch &amp; Time
+                StitchTime
               </span>
               <span className="text-[9px] font-mono uppercase px-1.5 py-0.2 rounded bg-[#C89B5C]/20 text-[#C89B5C] border border-[#C89B5C]/35 font-bold">
                 Atelier
@@ -39,6 +39,14 @@ export function AtelierHeader({ title, subtitle }: { title?: string; subtitle?: 
         {/* Right Side: Sync Badge & Clerk User */}
         <div className="flex items-center gap-2.5">
           <SyncStatusBar compact />
+
+          <Link
+            href="/sign-up"
+            className="px-3 py-1.5 rounded-xl bg-[#2E3543] hover:bg-[#384050] border border-[#C89B5C]/40 text-[#F4EFEA] hover:text-[#C89B5C] font-mono text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm"
+          >
+            <User className="w-3.5 h-3.5 text-[#C89B5C]" />
+            <span>Log In</span>
+          </Link>
 
           {hasClerk ? (
             <div className="flex items-center">

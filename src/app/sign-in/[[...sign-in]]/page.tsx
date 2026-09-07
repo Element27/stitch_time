@@ -17,7 +17,7 @@ export default function SignInPage() {
           </div>
           <div className="text-center">
             <h1 className="font-serif font-bold text-xl tracking-widest uppercase text-[#F4EFEA]">
-              Stitch &amp; Time
+              StitchTime
             </h1>
             <p className="text-xs font-mono text-[#9E988F]">
               Editorial Bespoke Atelier
