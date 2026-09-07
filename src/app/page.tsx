@@ -76,9 +76,9 @@ export default function AtelierDashboardPage() {
             <div className="flex items-center gap-2.5">
               <Link
                 href="/sign-up"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#2E3543] hover:bg-[#384050] border border-[#C89B5C]/40 text-[#F4EFEA] hover:text-[#C89B5C] font-bold text-sm transition-all shadow-md"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#C89B5C] hover:bg-[#DFB77B] active:scale-95 text-[#13161C] font-extrabold text-sm shadow-lg shadow-[#C89B5C]/25 transition-all"
               >
-                <User className="w-4 h-4 text-[#C89B5C]" />
+                <User className="w-4 h-4 stroke-[2.5]" />
                 <span>Log In</span>
               </Link>
               <Link

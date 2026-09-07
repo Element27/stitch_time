@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { seedDatabaseIfEmpty } from '@/lib/db/seed';
 import { initSyncEngine } from '@/lib/sync/syncEngine';
+import { AuthGuard } from '@/components/providers/AuthGuard';
 
 export function ClientProviders({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -29,5 +30,9 @@ export function ClientProviders({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AuthGuard>{children}</AuthGuard>
+    </QueryClientProvider>
+  );
 }

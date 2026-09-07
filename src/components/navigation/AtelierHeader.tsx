@@ -42,9 +42,9 @@ export function AtelierHeader({ title, subtitle }: { title?: string; subtitle?: 
 
           <Link
             href="/sign-up"
-            className="px-3 py-1.5 rounded-xl bg-[#2E3543] hover:bg-[#384050] border border-[#C89B5C]/40 text-[#F4EFEA] hover:text-[#C89B5C] font-mono text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm"
+            className="px-3.5 py-1.5 rounded-xl bg-[#C89B5C] hover:bg-[#DFB77B] text-[#13161C] font-mono text-xs font-extrabold transition-all flex items-center gap-1.5 shadow-md shadow-[#C89B5C]/25 active:scale-95"
           >
-            <User className="w-3.5 h-3.5 text-[#C89B5C]" />
+            <User className="w-3.5 h-3.5 stroke-[2.5]" />
             <span>Log In</span>
           </Link>
 
